@@ -76,20 +76,10 @@ $( function()
             target.attr( 'title', tip );
         };
 
-
-        if(mobilecheck()){
-            target.bind( 'tapcancel', remove_tooltip );        
-            target.bind( 'tapcancel', remove_tooltip );
-        }
-        else{
             target.bind( 'mouseleave', remove_tooltip );
             tooltip.bind( 'click', remove_tooltip );
-        }
         
         };
-        if(mobilecheck()) targets.bind( 'taphold', doTooltip);
-        else targets.bind( 'mouseenter', doTooltip);
-       
-       
+       targets.bind( 'mouseenter', doTooltip);
   
 });

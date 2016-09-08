@@ -4,21 +4,21 @@ $( function()
         target  = false,
         tooltip = false,
         title   = false;
- 
-    targets.bind( 'mouseenter', function()
-    {
-        target  = $( this );
-        tip     = target.attr( 'title' );
-        tooltip = $( '<div id="tooltip"></div>' );
- 
-        if( !tip || tip == '' )
-            return false;
- 
-        target.removeAttr( 'title' );
-        tooltip.css( 'opacity', 0 )
-               .html( tip )
-               .appendTo( 'body' );
- 
+    
+        var doTooltip = function()
+        {
+            target  = $( this );
+            tip     = target.attr( 'title' );
+            tooltip = $( '<div id="tooltip"></div>' );
+    
+            if( !tip || tip == '' )
+                return false;
+    
+            target.removeAttr( 'title' );
+            tooltip.css( 'opacity', 0 )
+                .html( tip )
+                .appendTo( 'body' );
+        
         var init_tooltip = function()
         {
             if( $( window ).width() < tooltip.outerWidth() * 1.5 )
@@ -59,9 +59,9 @@ $( function()
  
         init_tooltip();
         $( window ).resize( init_tooltip );
- 
+        
         var remove_tooltip = function()
-        {
+        {           
             tooltip.animate( { top: '-=10', opacity: 0 }, 50, function()
             {
                 $( this ).remove();
@@ -69,8 +69,16 @@ $( function()
  
             target.attr( 'title', tip );
         };
- 
-        target.bind( 'mouseleave', remove_tooltip );
-        tooltip.bind( 'click', remove_tooltip );
-    });
+
+
+        //target.bind( 'mouseleave', remove_tooltip );
+        target.bind('tap',remove_tooltip);
+        //tooltip.bind( 'click', remove_tooltip );
+        tooltip.bind( 'tap', remove_tooltip );
+        };
+        
+        //targets.bind( 'mouseenter', doTooltip);
+        targets.bind( 'tap', doTooltip);
+       
+  
 });

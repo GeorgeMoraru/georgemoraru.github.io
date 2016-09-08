@@ -72,13 +72,13 @@ $( function()
 
 
         target.bind( 'mouseleave', remove_tooltip );
-        target.bind('touchleave',remove_tooltip);
+        target.bind('touchcancel',remove_tooltip);
         tooltip.bind( 'click', remove_tooltip );
         tooltip.bind( 'touchcancel', remove_tooltip );
         };
         
         targets.bind( 'mouseenter', doTooltip);
-        targets.bind( 'touchenter', doTooltip);
+        targets.bind( 'taphold', doTooltip);
        
   
 });

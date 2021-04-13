@@ -1,18 +1,14 @@
 (function () {
-    debugger;
+
     window.HomeHub = {
-        Loader: {
-            FilesToLoad: {},
-            PathsToExclude: []
+        ResourceLoader: {
+            LoadResources: {}
         }
     }
 
-    HomeHub.Loader.CSSFilesToLoad = {
+    HomeHub.ResourceLoader.LoadResources = {
         "/core/css/main.css": {},
-        "/core/css/theme.css": {}
-    };
-
-    HomeHub.Loader.JSFilesToLoad = {
+        "/core/css/theme.css": {},
         "/core/js/main.js": {}
     };
 

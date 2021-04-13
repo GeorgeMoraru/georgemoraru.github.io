@@ -1,14 +1,14 @@
 (function () {
     
-    var loadResources = function (jsFiles, cssFiles, loadExtraFiles, eventName, doneLoadingCallback) {
-        if (!jsFiles) jsFiles = HomeHub.Loader.JSFilesToLoad;
-        if (!cssFiles) cssFiles = HomeHub.Loader.CSSFilesToLoad;
+    var loadResources = function (files, eventName, doneLoadingCallback) {
+        debugger;
+        if (!files) files = HomeHub.ResourceLoader.LoadResources;
         if (!eventName) eventName = 'DOMContentLoaded';
         if (loadExtraFiles === undefined) loadExtraFiles = true;
         
         //load CSS
         let loadedCSS = 0
-        let CSSFilesToLoad = convertToArray(cssFiles);
+        let CSSFilesToLoad = convertToArray(files);
 
         CSSFilesToLoad = prepareFiles(CSSFilesToLoad.map(function (lib) {
             if (typeof lib == 'object') {
@@ -48,7 +48,7 @@
 
         // load 
 		
-        let JSFilesToLoad = convertToArray(jsFiles);
+        let JSFilesToLoad = convertToArray(files);
 
         JSFilesToLoad = prepareFiles(JSFilesToLoad.map(function (lib) {
             if (typeof lib == 'object') {
@@ -96,26 +96,6 @@
             }
 
             return position;
-        }
-
-        function injectAdditionalFiles(files, additionalFiles) {
-
-            if (!additionalFiles) return files;
-
-            for (var i = 0; i < additionalFiles.length; i++) {
-                var dependentOn = additionalFiles[i].DependentOn;
-                var dependentFiles = additionalFiles[i].DependentFiles;
-
-                var insertPos = getFilePosition(files, dependentOn);
-
-                if (insertPos !== -1) {
-                    for (var j = dependentFiles.length - 1; j >= 0; j--) {
-                        files.splice(insertPos + 1, 0, dependentFiles[j]);
-                    }
-                }
-            }
-
-            return files;
         }
 
         function onLibLoaded(event) {
@@ -247,46 +227,6 @@
         return hasExtension(file, 'js')
     }
 
-    function mergeWithExclude(target, source, excludePaths, toLowercase) {
-        if (toLowercase == undefined) toLowercase = false;
-        source = source || {}
-        excludePaths = excludePaths || []
-        const result = deepmerge(target, source)
-        excludePaths.forEach(function (pathArray) {
-            excludePath(result, pathArray, toLowercase)
-        })
-
-        return result
-    }
-
-    HomeHub.mergeWithExclude = mergeWithExclude
-
-    function excludePath(result, pathArray, toLowercase) {
-        let pointer = result
-        const lastKey = pathArray.pop()
-        pathArray.forEach(function (key) {
-            if (toLowercase) {
-                if (pointer[key.toLowerCase()] != undefined) {
-                    pointer = pointer[key.toLowerCase()]
-                }
-
-            } else {
-                if (pointer[key] != undefined) {
-                    pointer = pointer[key]
-                }
-            }
-
-        })
-        if (toLowercase) {
-            pathArray.push(lastKey.toLowerCase())
-            delete pointer[lastKey.toLowerCase()]
-        } else {
-            pathArray.push(lastKey)
-            delete pointer[lastKey]
-        }
-
-    }
-
     function hasExtension(f, e) {
         if (e[0] !== '.') {
             e = '.' + e;
@@ -297,79 +237,10 @@
             return true;
         }
     }
-
-    function isMergeableObject(val) {
-        var nonNullObject = val && typeof val === 'object'
-
-        return nonNullObject &&
-            Object.prototype.toString.call(val) !== '[object RegExp]' &&
-            Object.prototype.toString.call(val) !== '[object Date]'
-    }
-
-    function emptyTarget(val) {
-        return Array.isArray(val) ? [] : {}
-    }
-
-    function cloneIfNecessary(value, optionsArgument) {
-        var clone = optionsArgument && optionsArgument.clone === true
-        return (clone && isMergeableObject(value)) ? deepmerge(emptyTarget(value), value, optionsArgument) : value
-    }
-
-    function defaultArrayMerge(target, source, optionsArgument) {
-        var destination = target.slice()
-        source.forEach(function (e, i) {
-            if (typeof destination[i] === 'undefined') {
-                destination[i] = cloneIfNecessary(e, optionsArgument)
-            } else if (isMergeableObject(e)) {
-                destination[i] = deepmerge(target[i], e, optionsArgument)
-            } else if (target.indexOf(e) === -1) {
-                destination.push(cloneIfNecessary(e, optionsArgument))
-            }
-        })
-        return destination
-    }
-
-
-    function mergeObject(target, source, optionsArgument) {
-        var destination = {}
-        if (isMergeableObject(target)) {
-            Object.keys(target).forEach(function (key) {
-                destination[key] = cloneIfNecessary(target[key], optionsArgument)
-            })
-        }
-        Object.keys(source).forEach(function (key) {
-            if (!isMergeableObject(source[key]) || !target[key]) {
-                destination[key] = cloneIfNecessary(source[key], optionsArgument)
-            } else {
-                destination[key] = deepmerge(target[key], source[key], optionsArgument)
-            }
-        })
-        return destination
-    }
-
-    function deepmerge(target, source, optionsArgument) {
-        var array = Array.isArray(source);
-        var options = optionsArgument || {
-            arrayMerge: defaultArrayMerge
-        }
-        var arrayMerge = options.arrayMerge || defaultArrayMerge
-
-        if (array) {
-            return Array.isArray(target) ? arrayMerge(target, source, optionsArgument) : cloneIfNecessary(source, optionsArgument)
-        } else {
-            return mergeObject(target, source, optionsArgument)
-        }
-    }
     
     window.HomeHub.ResourceLoader = {
-        deepmerge: deepmerge,
-        mergeObject: mergeObject,
-        defaultArrayMerge: defaultArrayMerge,
-        cloneIfNecessary: cloneIfNecessary,
-        emptyTarget: emptyTarget,
-        isMergeableObject: isMergeableObject,
         hasExtension: hasExtension,
-        loadResources: loadResources
+        LoadResources: loadResources
     }
 
 })()

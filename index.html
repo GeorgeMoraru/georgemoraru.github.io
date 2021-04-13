@@ -4,15 +4,31 @@
 <head>
     <meta charset="utf-8">
     <title>George M</title>
-    <link media="screen" rel="stylesheet" href="/core/css/theme.css">
-    <link media="screen" rel="stylesheet" href="/core/css/main.css">
-    <script src="/core/js/main.js"> </script>
+    <script>
+        {
+            const neverCachedJS = [
+                "/pageSettings.js",
+                "/core/js/resourceLoader.js"
+            ]
+
+            const now = new Date().getTime();
+            neverCachedJS.forEach(function (src) {
+                const script = document.createElement('script');
+                script.src = src + '?' + now;
+                script.async = false;
+                document.head.appendChild(script);
+            })
+        }
+    </script>
+
+
+
 </head>
 
 <body>
     <div class="css-background"></div>
     <div class="content">
-        <span>In construction...</span>
+        <span> In construction .. </span>
     </div>
 </body>
 

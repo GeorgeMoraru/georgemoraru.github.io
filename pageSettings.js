@@ -1,15 +1,11 @@
 (function () {
-
+    
     window.HomeHub = {
-        ResourceLoader: {
-            LoadResources: {}
+        Resources : {
+            "/core/css/main.css": {},
+            "/core/css/theme.css": {},
+            "/core/js/main.js": {}
         }
     }
-
-    HomeHub.ResourceLoader.LoadResources = {
-        "/core/css/main.css": {},
-        "/core/css/theme.css": {},
-        "/core/js/main.js": {}
-    };
 
 })();

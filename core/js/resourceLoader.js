@@ -2,10 +2,9 @@
     
     var loadResources = function (files, eventName, doneLoadingCallback) {
         debugger;
-        if (!files) files = HomeHub.ResourceLoader.LoadResources;
+        if (!files) files = HomeHub.Resources;
         if (!eventName) eventName = 'DOMContentLoaded';
-        if (loadExtraFiles === undefined) loadExtraFiles = true;
-        
+
         //load CSS
         let loadedCSS = 0
         let CSSFilesToLoad = convertToArray(files);
@@ -149,7 +148,7 @@
     }
 
 
-    function loadLib(libSrc, then, params, fileVersion) {
+    function loadLib(libSrc, then, params) {
         const script = document.createElement('script')
         const version = new Date().getHours()
         script.src = libSrc + '?v=' + version
@@ -198,23 +197,14 @@
 
         const isFunc = css ? isCSS : isJS
 
-        const toAddObject = Object.keys(HomeHub.Loader.FilesToLoad).filter(isFunc).reduce(function (acc, path) {
-            acc[path.toLowerCase()] = HomeHub.Loader.FilesToLoad[path]
+        const toAddObject = Object.keys(HomeHub.Resources).filter(isFunc).reduce(function (acc, path) {
+            acc[path.toLowerCase()] = HomeHub.Resources[path]
             if (!acc[path.toLowerCase()].src) {
                 acc[path.toLowerCase()].src = path
             }
             return acc
         }, {})
-        const FilterFunc = css ? isCSS : function (str) {
-            return !isCSS(str)
-        }
-        const excluded = HomeHub.Loader.PathsToExclude.filter(function (arrayPath) {
-            return FilterFunc(arrayPath[arrayPath.length - 1])
-        })
-        const merged = mergeWithExclude(filesObject, toAddObject, excluded, true)
-        return Object.keys(merged).map(function (key) {
-            return merged[key]
-        })
+        
     }
 
     /* utils */
@@ -237,10 +227,10 @@
             return true;
         }
     }
-    
+    debugger;
     window.HomeHub.ResourceLoader = {
-        hasExtension: hasExtension,
         LoadResources: loadResources
     }
 
+    window.HomeHub.ResourceLoader.LoadResources();
 })()

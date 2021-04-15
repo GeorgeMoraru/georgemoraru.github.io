@@ -1,236 +1,162 @@
 (function () {
-    
-    var loadResources = function (files, eventName, doneLoadingCallback) {
-        debugger;
-        if (!files) files = HomeHub.Resources;
-        if (!eventName) eventName = 'DOMContentLoaded';
 
-        //load CSS
-        let loadedCSS = 0
-        let CSSFilesToLoad = convertToArray(files);
+    var widgetsRoot = "/core/widgets/";
+    var fullLibSrcs;
+    var loadedLibs = 0;
+    var loadedCSS = 0;
+    var JSFilesToLoad;
+    var CSSFilesToLoad;
 
-        CSSFilesToLoad = prepareFiles(CSSFilesToLoad.map(function (lib) {
-            if (typeof lib == 'object') {
-                lib.src =lib.src;
-                return lib;
-            }
-            return {
-                src: lib
-            }
-        }), true)
+    var loadResources = function () {
 
-        CSSFilesToLoad.forEach(function (file) {
-            const link = document.createElement('link')
-            link.rel = 'stylesheet'
-            link.href = file.src
-            link.onload = onCSSFileLoaded
-            link.onerror = onCSSFileLoaded
-            document.head.appendChild(link)
+        eventName = 'ResourcesLoaded';
+
+        Object.keys(HomeHub.Resources.Widgets).forEach(function (key) {
+            var widgetFullPath = widgetsRoot + "/" + key + "/" + key + ".js";
+            var widgetTemplatePath = widgetsRoot + "/" + key + "/template.js";
+            HomeHub.Resources.JS.push(widgetFullPath);
+            HomeHub[key] = {};
+            HomeHub[key].Settings = HomeHub.Resources.Widgets[key].Settings;
+            HomeHub.Resources.JS.push(widgetTemplatePath);
         })
 
-        function checkDoneLoading() {
-            if (loadedCSS === CSSFilesToLoad.length && loadedLibs === JSFilesToLoad.length) {
-                if (typeof doneLoadingCallback === 'function') {
-                    doneLoadingCallback();
-                }
-            }
-        }
+        //load CSS
 
-        function onCSSFileLoaded() {
+        CSSFilesToLoad = HomeHub.Resources.CSS.map(function (res) {
+            return setResources(res);
+        });
+
+        CSSFilesToLoad.forEach(function (file) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = file.src;
+            link.onload = onCSSFileLoaded;
+            link.onerror = onCSSFileLoaded;
+            document.head.appendChild(link);
+        });
+
+        var onCSSFileLoaded = function () {
             loadedCSS++
             if (loadedCSS < CSSFilesToLoad.length) {
-                return
+                return;
             }
+
             checkDoneLoading();
-            document.body.hidden = false
-        }
+        };
 
-        // load 
-		
-        let JSFilesToLoad = convertToArray(files);
-
-        JSFilesToLoad = prepareFiles(JSFilesToLoad.map(function (lib) {
-            if (typeof lib == 'object') {
-                lib.src = lib.src;
-                return lib;
-            }
-            return {
-                src: lib
-            }
-        }), false)
+        // load JS files
+        JSFilesToLoad = HomeHub.Resources.JS.map(function (res) {
+            return setResources(res);
+        });
 
         if (!location.origin) {
             location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
         }
 
-        const fullLibSrcs = JSFilesToLoad.map(function (lib) {
+        fullLibSrcs = JSFilesToLoad.map(function (lib) {
             if (lib.src.indexOf('http') == 0)
-                return lib.src
+                return lib.src;
 
-            return location.origin + lib.src
+            return location.origin + lib.src;
         })
-
-        let loadedLibs = 0
-
-        HomeHub.fakeNodeEnvironment = function () {
-            window.exports = window.module = {}
-            window.module.exports = window.exports
-        }
 
         JSFilesToLoad.forEach(function (lib) {
-            loadLib(lib.src, onLibLoaded, lib.params, lib.version)
+            loadLib(lib.src, onLibLoaded, lib.params, lib.version);
+        })
+    };
+
+    var setResources = function (res) {
+        if (typeof res == 'object') {
+            res.src = res.src;
+            return res;
+        }
+        return {
+            src: res
+        }
+    };
+
+    var onLibLoaded = function (event) {
+
+        loadedLibs++;
+
+        let scriptSrc = event.target.src.substr(0, event.target.src.indexOf('?v='));
+
+        let loadedLib;
+
+        fullLibSrcs.forEach(function (src, i) {
+            if (src === scriptSrc)
+                loadedLib = JSFilesToLoad[i];
         })
 
-        function getFilePosition(files, searchedFile) {
-            var position = -1;
-
-            for (var i = 0; i < files.length; i++) {
-                if (files[i].src && files[i].src === searchedFile) {
-                    position = i;
-                    break;
-                } else if (!files[i].src && files[i] === searchedFile) {
-                    position = i;
-                    break;
-                }
-            }
-
-            return position;
+        if (!loadedLib) {
+            console.error('fullLibSrcs:', fullLibSrcs);
+            throw Error('could not find ' + scriptSrc);
         }
 
-        function onLibLoaded(event) {
+        if (window.module && window.module.exports) {
 
-            loadedLibs++
-
-            const scriptSrc = event.target.src.substr(0, event.target.src.indexOf('?v='))
-
-            let loadedLib
-
-            fullLibSrcs.forEach(function (src, i) {
-                if (src === scriptSrc)
-                    loadedLib = JSFilesToLoad[i]
-            })
-
-            if (!loadedLib) {
-                console.error('fullLibSrcs:', fullLibSrcs)
-                throw Error('could not find ' + scriptSrc)
-            }
-
-            if (window.module && window.module.exports) {
-
-                if (loadedLib.globalAlias instanceof Array) {
-                    for (var i = 0; i < loadedLib.globalAlias.length; i++) {
-                        var alias = loadedLib.globalAlias[i];
-                        SH[alias] = module.exports;
-                        if (loadedLib.globallyAvailable) {
-                            window[alias] = SH[alias];
-                        }
-                    }
-                } else {
-                    SH[loadedLib.globalAlias] = module.exports;
+            if (loadedLib.globalAlias instanceof Array) {
+                for (var i = 0; i < loadedLib.globalAlias.length; i++) {
+                    var alias = loadedLib.globalAlias[i];
+                    SH[alias] = module.exports;
                     if (loadedLib.globallyAvailable) {
-                        window[loadedLib.globalAlias] = SH[loadedLib.globalAlias];
+                        window[alias] = SH[alias];
                     }
                 }
+            } else {
+                SH[loadedLib.globalAlias] = module.exports;
+                if (loadedLib.globallyAvailable) {
+                    window[loadedLib.globalAlias] = SH[loadedLib.globalAlias];
+                }
             }
-
-            if (loadedLibs == JSFilesToLoad.length) {
-
-                const event = document.createEvent('Event')
-                event.initEvent(eventName, true, true)
-                document.dispatchEvent(event)
-
-                checkDoneLoading();
-            }
-
-            module = exports = undefined
         }
 
-    }
+        if (loadedLibs == JSFilesToLoad.length) {
+            const event = document.createEvent('Event');
+            event.initEvent(eventName, true, true);
+            document.dispatchEvent(event);
+        }
 
+        module = exports = undefined;
+    };
 
-    function loadLib(libSrc, then, params) {
-        const script = document.createElement('script')
-        const version = new Date().getHours()
-        script.src = libSrc + '?v=' + version
-        script.async = false
+    var loadLib = function (libSrc, then, params) {
+        const script = document.createElement('script');
+        const version = new Date().getHours();
+        script.src = libSrc + '?v=' + version;
+        script.async = false;
 
         if (then) {
-            script.onload = then
+            script.onload = then;
         }
 
         if (params) {
             Object.keys(params).forEach(function (key) {
-                script.setAttribute(key, params[key])
+                script.setAttribute(key, params[key]);
             })
         }
 
         script.onerror = function (e) {
             console.warn(libSrc + ' could not be loaded. Skipping...')
-            then && then(e)
+            then && then(e);
         }
 
-        document.head.appendChild(script)
-    }
+        document.head.appendChild(script);
 
-    function convertToArray(obj) {
-        return Object.keys(obj).reduce(function (acc, src) {
-            const value = obj[src]
+        checkDoneLoading();
+    };
 
-            if (Object.keys(value).length) {
-                value.src = src
-                acc.push(value)
-            } else {
-                acc.push(src)
+    var checkDoneLoading = function () {
+        if (loadedCSS === CSSFilesToLoad.length && loadedLibs === JSFilesToLoad.length) {
+            if (typeof doneLoadingCallback === 'function') {
+                doneLoadingCallback();
             }
-
-            return acc
-        }, [])
-    }
-
-    function prepareFiles(files, css) {
-        debugger;
-        const filesObject = files.reduce(function (acc, file) {
-            const key = file.src.toLowerCase();
-            acc[key] = file
-            return acc
-        }, {})
-
-        const isFunc = css ? isCSS : isJS
-
-        const toAddObject = Object.keys(HomeHub.Resources).filter(isFunc).reduce(function (acc, path) {
-            acc[path.toLowerCase()] = HomeHub.Resources[path]
-            if (!acc[path.toLowerCase()].src) {
-                acc[path.toLowerCase()].src = path
-            }
-            return acc
-        }, {})
-        
-    }
-
-    /* utils */
-
-    function isCSS(file) {
-        return hasExtension(file, 'css')
-    }
-
-    function isJS(file) {
-        return hasExtension(file, 'js')
-    }
-
-    function hasExtension(f, e) {
-        if (e[0] !== '.') {
-            e = '.' + e;
-        }
-        if (f.substring(f.length - e.length, f.length) !== e) {
-            return false;
-        } else {
-            return true;
         }
     }
-    debugger;
-    window.HomeHub.ResourceLoader = {
-        LoadResources: loadResources
-    }
+
+    window.HomeHub = window.HomeHub || {};
+    window.HomeHub.ResourceLoader = window.HomeHub.ResourceLoader || {};
+    window.HomeHub.ResourceLoader.LoadResources = loadResources;
 
     window.HomeHub.ResourceLoader.LoadResources();
 })()

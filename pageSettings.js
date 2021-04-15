@@ -1,10 +1,33 @@
 (function () {
-    
+
     window.HomeHub = {
-        Resources : {
-            "/core/css/main.css": {},
-            "/core/css/theme.css": {},
-            "/core/js/main.js": {}
+        Resources: {
+            CSS: [
+                "/core/css/core.css",
+                "/core/css/theme.css"
+            ],
+            JS: ["/core/js/core.js"],
+            Widgets: {
+                "navMenu": {
+                    Settings: {
+                        ParentSelector: "",
+                        Items: [
+                            {
+                                MenuName: "Dashboard",
+                                URL: "/modules/dashboard/dashboard.html"
+                            },
+                            {
+                                MenuName: "Food",
+                                URL: "/modules/food/food.html"
+                            },
+                            {
+                                MenuName: "Utilities",
+                                URL: "/modules/utilities/utilities.html"
+                            }
+                        ]
+                    }
+                }
+            }
         }
     }
 

@@ -4,11 +4,23 @@
 <head>
     <meta charset="utf-8">
     <title>George M</title>
-    <link media="screen" rel="stylesheet" href="/core/css/theme.css">
-    <link media="screen" rel="stylesheet" href="/core/css/main.css">
-    <link media="screen" rel="stylesheet" href="/modules/utilities/utilities.css">
-    <script src="/core/js/main.js"> </script>
-    <script src="/modules/utilities/utilities.js"> </script>
+    <script>
+        {
+            const neverCachedJS = [
+                "./pageSettings.js",
+                "/core/js/resourceLoader.js"
+            ]
+
+            const now = new Date().getTime();
+            neverCachedJS.forEach(function (src) {
+                const script = document.createElement('script');
+                script.src = src + '?' + now;
+                script.async = false;
+                document.head.appendChild(script);
+            })
+        }
+    </script>
+
 </head>
 
 <body>

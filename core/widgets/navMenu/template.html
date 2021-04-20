@@ -1,0 +1,10 @@
+<% debugger; %>
+<div class="nav">
+	<% for(var key=0; key < Items.length; key++){ 
+		var itemClass = (window.location.href.toLowerCase().indexOf(link.toLowerCase())==-1) ? "" : "active" ; 
+	%>
+	<div class="nav-item <%= iconClass %>">
+		<a href="<%= Items[key].URL %>"> <%= Items[key].MenuText %> </a>
+	</div>
+	<% } %>
+</div>

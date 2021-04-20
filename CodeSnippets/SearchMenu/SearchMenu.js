@@ -120,4 +120,6 @@
     SH.SearchMenu.processUrl = processUrl;
 
     render();
+    // TODO add an example with SH.Utils.generateEvent
+    
 })();

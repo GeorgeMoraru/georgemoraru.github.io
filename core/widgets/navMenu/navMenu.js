@@ -1,15 +1,16 @@
 (function () {
+    var settings = HomeHub.helpers.getModuleSettings(HomeHub.navMenu);
 
     var initComponent = function () {
-
-        var x = HomeHub.navMenu.Template("/modules/dashboard/dashboard.html", "Dashboard");
-        console.log(x);
-        /*
-        var x = HomeHub.navMenu.Template({
-            MenuName: "Dashboard",
-            URL: "/modules/dashboard/dashboard.html"
+        debugger;
+        // TODO fix underscore not loading.
+        HomeHub.helpers.compileTemplateAsync(settings.Template, settings.Items).done(function (html) {
+            debugger;
+            var parentContainer = $(settings.ParentSelector)[0];
+            if (parentContainer){
+                parentContainer.innerHTML = html;
+            }
         });
-        */
     }
 
     document.addEventListener("ResourcesLoaded", initComponent);

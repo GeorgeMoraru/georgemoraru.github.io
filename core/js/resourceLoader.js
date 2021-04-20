@@ -11,13 +11,11 @@
 
         eventName = 'ResourcesLoaded';
 
-        Object.keys(HomeHub.Resources.Widgets).forEach(function (key) {
+        Object.keys(HomeHub.Widgets).forEach(function (key) {
             var widgetFullPath = widgetsRoot + "/" + key + "/" + key + ".js";
-            var widgetTemplatePath = widgetsRoot + "/" + key + "/template.js";
             HomeHub.Resources.JS.push(widgetFullPath);
-            HomeHub[key] = {};
-            HomeHub[key].Settings = HomeHub.Resources.Widgets[key].Settings;
-            HomeHub.Resources.JS.push(widgetTemplatePath);
+            HomeHub[key] = HomeHub[key] || {};
+            HomeHub[key].Settings = HomeHub.Widgets[key].Settings;
         })
 
         //load CSS

@@ -12,6 +12,7 @@
         return reg.test(String(email).toLowerCase());
     };
 
+    // SH.utils.generateEvent("didnotFindTheResultsINeedEvent", document.body, {object});
     function generateEvent(name, targetEl) {
         targetEl = targetEl || document.body;
         const event = new CustomEvent('Event', { detail: arguments });

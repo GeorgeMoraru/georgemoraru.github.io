@@ -37,11 +37,12 @@
 
 .expiring-item{
     display: grid;
-    grid-template-columns: 5px 150px 150px 100px 100px;
+    grid-template-columns: 5px 150px repeat(5, 1fr);
     height:100px;
     box-sizing: border-box;
     overflow:hidden;
     margin-bottom:10px;
+    color:var(--gray);
 }
 
 .expiring-item > div{

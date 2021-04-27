@@ -42,6 +42,12 @@
                     }
                 ]
             }
+        },
+        "itemTable": {
+            Settings: {
+                ParentSelector: ".card.expiring-soon",
+                Template: "/core/widgets/itemTable/template.html"
+            }
         }
     };
 

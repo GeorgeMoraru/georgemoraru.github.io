@@ -17,20 +17,28 @@
     HomeHub.Widgets = {
         "navMenu": {
             Settings: {
-                ParentSelector: "#test",
+                ParentSelector: ".wrapper .sidebar",
                 Template: "/core/widgets/navMenu/template.html",
                 Items: [
                     {
+                        MenuIcon: "home",
+                        MenuText: "Home",
+                        URL: "/"
+                    },
+                    {
+                        MenuIcon: "dashboard",
                         MenuText: "Dashboard",
-                        URL: "/modules/dashboard/index.html"
+                        URL: "/modules/dashboard"
                     },
                     {
+                        MenuIcon: "kitchen",
                         MenuText: "Food",
-                        URL: "/modules/food/index.html"
+                        URL: "/modules/food"
                     },
                     {
+                        MenuIcon: "event",
                         MenuText: "Utilities",
-                        URL: "/modules/utilities/index.html"
+                        URL: "/modules/utilities"
                     }
                 ]
             }

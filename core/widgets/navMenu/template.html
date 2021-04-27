@@ -3,7 +3,16 @@
 		var itemClass = (window.location.href.toLowerCase().indexOf(Items[key].URL.toLowerCase())==-1) ? "" : "active" ; 
 	%>
 	<div class="nav-item <%= itemClass %>">
-		<a href="<%= Items[key].URL %>"> <%= Items[key].MenuText %> </a>
+		<a href="<%= Items[key].URL %>">
+			<div class="nav-item-container">
+				<span class="material-icons">
+					<%= Items[key].MenuIcon %>
+				</span>
+				<span class="nav-item-container-text">
+					<%= Items[key].MenuText %>
+				</span>
+			</div>
+		</a>
 	</div>
 	<% } %>
 </div>

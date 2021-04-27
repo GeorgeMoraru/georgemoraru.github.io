@@ -4,7 +4,8 @@
     HomeHub.Resources = {
         CSS: [
             "/core/css/core.css",
-            "/core/css/theme.css"
+            "/core/css/theme.css",
+            "/core/css/index.css",
         ],
         JS: [
             "/core/libs/jQuery.js",
@@ -16,19 +17,23 @@
     HomeHub.Widgets = {
         "navMenu": {
             Settings: {
-                ParentSelector: "",
+                ParentSelector: ".wrapper .sidebar",
+                Template: "/core/widgets/navMenu/template.html",
                 Items: [
                     {
-                        MenuName: "Dashboard",
-                        URL: "/modules/dashboard/dashboard.html"
+                        MenuIcon: "dashboard",
+                        MenuText: "Dashboard",
+                        URL: "/modules/dashboard"
                     },
                     {
-                        MenuName: "Food",
-                        URL: "/modules/food/food.html"
+                        MenuIcon: "kitchen",
+                        MenuText: "Food",
+                        URL: "/modules/food"
                     },
                     {
-                        MenuName: "Utilities",
-                        URL: "/modules/utilities/utilities.html"
+                        MenuIcon: "event",
+                        MenuText: "Utilities",
+                        URL: "/modules/utilities"
                     }
                 ]
             }

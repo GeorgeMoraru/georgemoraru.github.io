@@ -127,3 +127,12 @@ body * {
   grid-column: 2;
   grid-row: 2;
 }
+
+.card {
+  padding: 10px;
+  margin: 10px;
+  background-color: var(--secondary-color);
+  box-sizing: border-box;
+  border-radius: 16px;
+  box-shadow:var(--shadow);
+}

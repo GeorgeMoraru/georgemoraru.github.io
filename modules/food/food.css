@@ -1,0 +1,66 @@
+.content {
+    display: grid;
+    grid-template-rows: 50px repeat(3, 1fr) 50px;
+    grid-template-columns: 50px repeat(2, 2fr) 50px;
+}
+
+.content .expiring-soon{
+    grid-column-start: 2;
+    grid-column-end:4;
+    grid-row:2;
+}
+
+.content .available-items{
+    grid-column:2;
+    grid-row:3;
+}
+
+.content .shopping-list{
+    grid-column:3;
+    grid-row:3;
+}
+
+.content .cookbook{
+    grid-column-start: 2;
+    grid-column-end:4;
+    grid-row:4;
+}
+
+
+/* mock for expiring soon widget */
+
+.expiring {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+}
+
+.expiring-item{
+    display: grid;
+    grid-template-columns: 5px 150px 150px 100px;
+    height:100px;
+    box-sizing: border-box;
+    overflow:hidden;
+    margin-bottom:10px;
+}
+
+.expiring-item > div{
+    display:grid;
+    place-content:center;
+    justify-content: left;
+}
+
+.expiring-item-image{
+    position:relative;
+}
+
+.expiring-item-image .product-image {
+    object-fit: scale-down;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}

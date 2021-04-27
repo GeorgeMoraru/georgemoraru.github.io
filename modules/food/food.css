@@ -37,7 +37,7 @@
 
 .expiring-item{
     display: grid;
-    grid-template-columns: 5px 150px 150px 100px;
+    grid-template-columns: 5px 150px 150px 100px 100px;
     height:100px;
     box-sizing: border-box;
     overflow:hidden;
@@ -63,4 +63,12 @@
     left: 0;
     bottom: 0;
     right: 0;
+}
+
+.red{
+    background:red;
+}
+
+.orange {
+    background: orange;
 }

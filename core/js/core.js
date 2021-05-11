@@ -1,4 +1,4 @@
-(function () {
+
     'use strict';
 
     if (!window.HomeHub) {
@@ -275,26 +275,24 @@
         });
     };
 
-    window.HomeHub.helpers = {
-        compileTemplateAsync: compileTemplateAsync,
-        promiseResolve: promiseResolve,
-        loadTemplateAsync: loadTemplateAsync,
-        promiseAll: promiseAll,
-        Promise: Promise,
-        blobToURL: blobToURL,
-        getParameterByName: getParameterByName,
-        getModuleSettings: getModuleSettings,
-        generateEvent: generateEvent,
-        Defer: defer,
-        prettifyURL: prettifyURL,
-        defineNamespace: defineNamespace,
-        setHashParameter: setHashParameter,
-        cleanHashParameter: cleanHashParameter,
-        getNamespace: getNamespace,
-        generateGuid: generateGuid,
-        defineProperty: defineProperty,
-        prettifyName: prettifyName,
-        isEmail: isEmail
-    };
-
-})();
+export {
+    compileTemplateAsync as compileTemplateAsync,
+    promiseResolve as promiseResolve,
+    loadTemplateAsync as loadTemplateAsync,
+    promiseAll as promiseAll,
+    Promise as Promise,
+    blobToURL as blobToURL,
+    getParameterByName as getParameterByName,
+    getModuleSettings as getModuleSettings,
+    generateEvent as generateEvent,
+    defer as defer,
+    prettifyURL as prettifyURL,
+    defineNamespace as defineNamespace,
+    setHashParameter as setHashParameter,
+    cleanHashParameter as cleanHashParameter,
+    getNamespace as getNamespace,
+    generateGuid as generateGuid,
+    defineProperty as defineProperty,
+    prettifyName as prettifyName,
+    isEmail as isEmail
+};

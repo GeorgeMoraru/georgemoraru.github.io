@@ -1,5 +1,4 @@
-(function () {
-
+export function PageSettings() {
     window.HomeHub = {};
     HomeHub.Resources = {
         CSS: [
@@ -40,4 +39,4 @@
         }
     };
 
-})();
+};

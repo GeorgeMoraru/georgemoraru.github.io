@@ -4,23 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>George M</title>
-    <script>
-        {
-            const neverCachedJS = [
-                "/pageSettings.js",
-                "/core/js/resourceLoader.js"
-            ]
-
-            const now = new Date().getTime();
-            neverCachedJS.forEach(function (src) {
-                const script = document.createElement('script');
-                script.src = src + '?' + now;
-                script.async = false;
-                document.head.appendChild(script);
-            })
-        }
-    </script>
-
+    <script type="module" src="/core/js/app.js"></script>
 </head>
 
 <body>

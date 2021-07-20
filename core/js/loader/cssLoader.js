@@ -2,8 +2,7 @@
     var loadedCSS = 0;
     var CSSFilesToLoad;
 
-    var loadCss = function (cssFiles) {
-        debugger;
+    var loadCSS = function (cssFiles) {
         //load CSS
 
         CSSFilesToLoad = cssFiles.map(function (res) {
@@ -29,7 +28,6 @@
     };
 
     var setResources = function (res) {
-        debugger;
         if (typeof res == 'object') {
             res.src = res.src;
             return res;
@@ -40,5 +38,5 @@
     };  
     
 export {
-    loadCss as LoadCss
+    loadCSS as LoadCSS
 };

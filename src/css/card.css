@@ -1,0 +1,6 @@
+.card {
+    display:inline-block;
+    background-color:var(--test);
+    border-radius: var(--card-border-radius);
+    padding:10px;
+}

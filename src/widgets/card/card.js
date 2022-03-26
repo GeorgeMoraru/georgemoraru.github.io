@@ -1,14 +1,15 @@
+import '../../css/app.css';
 import '../../css/card.css';
 function Card() {
   return (
     <div className="card">
-      <div class="card-header">
+      <div className="card-header">
         Test Card
       </div>
-      <div class="card-body">
+      <div className="card-body">
         This is the body of the card
       </div>
-      <div class="card-footer">
+      <div className="card-footer">
           <a> Card action</a>
       </div>
     </div>

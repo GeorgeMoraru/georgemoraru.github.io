@@ -1,16 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="/css/base.css">
-    <script src="/js/base.js"></script>
-</head>
-<body>
+    <head>
+        <link rel="stylesheet" href="/css/base.css">
+        <script src="/js/base.js"></script>
+    </head>
 
-<div class="hero">
-<img class="hero-img" src="/img/hero1.jpg" alt="hero1"/>
-</div>
+    <body>
+        <div class="content">
+            <div class="section hero">
+                <!--<div class="hero-img"></div>-->
+                <div class="hero-image-wrapper">
+                    <img id="heroImg" class="hero-img" src="/img/hero1.jpg" alt="hero"/>
+                </div>
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="section about-us"> a</div>
+            <div class="section familly"> a</div>
+            <div class="section event">
+            
+                <div class="card location">
+                    <div class="header">Locatie</div>
+                    <div class="body">
+                            <iframe class="map" src="https://maps.google.com/maps?q=Tangesir%20Dates%20Products&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" allowfullscreen style="border:0" width="300" height="350"></iframe>
+                    </div>
+                    <div class="footer"></div>
+                </div>
+            
+                <div class="card location">
+                    <div class="header">Locatie</div>
+                    <div class="body">
+                        <iframe class="map"
+                            src="https://maps.google.com/maps?q=Tangesir%20Dates%20Products&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                            allowfullscreen style="border:0" width="300" height="350"></iframe>
+                    </div>
+                    <div class="footer"></div>
+                </div>
+            
+            </div>
+        </div>
 
+        <script>
+        randomHeroImage();
+        </script>
 
-</body>
+    </body>
 
 <html>

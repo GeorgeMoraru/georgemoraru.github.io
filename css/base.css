@@ -1,20 +1,113 @@
+:root {
+    --hero-overlay-color-solid: #14254cb3;
+    --hero-overlay-color-alpha: #1e1e1eb3;
+}
+
 * {
     margin:0;
     padding:0;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+body{
+    -ms-overflow-style: none;
+     scrollbar-width: none;
+}
+
+.section {
+  width: 100%;
+  height: 100vh;
+  position: relative;  
+}
+
 .hero {
-    width:100vw;
-    height:100vh;
-    position:relative;
+    background-color:var(--hero-overlay-color-solid);
     overflow:hidden;
 }
 
+.hero-image-wrapper {
+    position:relative;
+    overflow:hidden;
+    width: 100%;
+    height: 100vh;
+}
+
 .hero-img {
-    position:absolute;
-    width:100%;
-    top:0;
-    left:0;
-    bottom:0;
-    right:0;
+    position: absolute;
+    /*
+    background-image: url("/img/hero1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    */
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin:auto;
+    z-index: 1;
+   
+}
+
+.hero-overlay {
+    position: absolute;
+    
+    background-color: var(--hero-overlay-color-alpha);
+    background-image: linear-gradient(to right, var(--hero-overlay-color-solid), var(--hero-overlay-color-alpha), var(--hero-overlay-color-solid));
+    
+    z-index: 2;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+
+.about-us {
+    display:none;
+    background-color:red;
+}
+
+.familly {
+    display:none;
+    background-color:blue;
+}
+
+.event {
+    
+    background-color:var(--hero-overlay-color-solid);
+   /* background-color:#e0e0e0;*/
+}
+
+.card {
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+    padding:10px;
+    margin:10px;
+    width:auto;  
+    float:left;
+    background:#FFFFFF
+}
+
+.card .header {
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    padding: 10px;
+}
+
+.card:hover {
+    background: #fff;
+    border: 0;
+    box-shadow: 0 1px 2px rgb(60 64 67 / 30%),0 1px 3px 1px rgb(60 64 67 / 15%);
+}
+
+.card.locatie {
+    width:300px;
+    height:400px
 }

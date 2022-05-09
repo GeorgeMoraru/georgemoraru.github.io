@@ -3,40 +3,100 @@
     <head>
         <link rel="stylesheet" href="/css/base.css">
         <script src="/js/base.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <div class="content">
             <div class="section hero">
-                <!--<div class="hero-img"></div>-->
                 <div class="hero-image-wrapper">
-                    <img id="heroImg" class="hero-img" src="/img/hero1.jpg" alt="hero"/>
+                    <img id="heroImg" class="hero-img mask hero-mask" src="/img/hero6.jpg" alt="hero"/>
                 </div>
-                <div class="hero-overlay"></div>
             </div>
             
-            <div class="section about-us"> a</div>
-            <div class="section familly"> a</div>
+            <div class="section about-us"> 
+                <div class="centered">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non lacus eget neque aliquam elementum eu faucibus neque.
+                    Sed fringilla velit non magna pretium, in ornare odio porttitor. Nulla eu tincidunt erat, sed fermentum felis. Cras et
+                    ante vitae tellus iaculis pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non semper lacus. Aliquam
+                    blandit libero ut arcu tempus gravida. Phasellus eget odio vulputate, lacinia felis sit amet, luctus justo. Fusce porta
+                    malesuada mauris, sit amet imperdiet orci lobortis a.
+                </div>
+            </div>
+            <div class="section familly"> 
+                <div class="card godfathers">
+                    <div class="header">
+                        <div class="title">Nasi</div>
+                        <div class="info"></div>
+                    </div>
+                
+                    <div class="body"> </div>
+                </div>
+
+                <div class="card parents">
+                    <div class="header">
+                        <div class="title">Parinti</div>
+                        <div class="info"></div>
+                    </div>
+                
+                    <div class="body"> </div>
+                </div>
+                
+            </div>
             <div class="section event">
             
                 <div class="card location">
-                    <div class="header">Locatie</div>
-                    <div class="body">
-                            <iframe class="map" src="https://maps.google.com/maps?q=Tangesir%20Dates%20Products&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" allowfullscreen style="border:0" width="300" height="350"></iframe>
+                    <div class="header">
+                        <div class="title">Locatie</div>
+                        <div class="info">Address: Strada Armand Călinescu 20, Pitești</div>
                     </div>
-                    <div class="footer"></div>
-                </div>
-            
-                <div class="card location">
-                    <div class="header">Locatie</div>
+
                     <div class="body">
-                        <iframe class="map"
-                            src="https://maps.google.com/maps?q=Tangesir%20Dates%20Products&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-                            allowfullscreen style="border:0" width="300" height="350"></iframe>
+                        <div class="mapouter">
+                            <div class="gmap_canvas"><iframe width="400" height="200" id="gmap_canvas"
+                                    src="https://maps.google.com/maps?q=Laguna%20Pitesti&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                                    scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                <style>
+                                    .mapouter {
+                                        position: relative;
+                                        text-align: right;
+                                        height: 220px;
+                                        width: 400px;
+                                    }
+                                </style>
+                                <style>
+                                    .gmap_canvas {
+                                        overflow: hidden;
+                                        background: none !important;
+                                        height: 220px;
+                                        width: 400px;
+                                    }
+                                </style>
+                            </div>
+                        </div>
                     </div>
-                    <div class="footer"></div>
                 </div>
-            
+                
+                <div class="card confirmare">
+                    <div class="header">
+                        <div class="title">Confirmare</div>
+                        <div class="info"></div>
+                    </div>
+                
+                    <div class="body"> </div>
+                </div>
+
+                <div class="card contact">
+                    <div class="header">
+                        <div class="title">Contact</div>
+                        <div class="info"></div>
+                    </div>
+                
+                    <div class="body"> </div>
+                </div>
+
             </div>
         </div>
 

@@ -1,11 +1,13 @@
 :root {
-    --hero-overlay-color-solid: #14254cb3;
-    --hero-overlay-color-alpha: #1e1e1eb3;
+    --background-color:#FFFFFF;
+    --card-box-shadow: 0 1px 2px rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+    --card-border: 1px solid #dadce0;
 }
 
 * {
     margin:0;
     padding:0;
+    font-family: 'Dancing Script',cursive;
 }
 
 ::-webkit-scrollbar {
@@ -17,14 +19,19 @@ body{
      scrollbar-width: none;
 }
 
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
 .section {
   width: 100%;
-  height: 100vh;
+  height: auto;
   position: relative;  
 }
 
 .hero {
-    background-color:var(--hero-overlay-color-solid);
+    background-color:var(--background-color);
     overflow:hidden;
 }
 
@@ -33,81 +40,124 @@ body{
     overflow:hidden;
     width: 100%;
     height: 100vh;
+    text-align: center;
+}
+
+.hero-image-wrapper:after,
+.hero-image-wrapper:before {
+    position: absolute;
+    content: "";
+    background-image: url(/img/flowers.png);
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: 35%;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-clip: border-box;
+}
+
+.hero-image-wrapper:before {
+    transform: rotate(180deg);
 }
 
 .hero-img {
-    position: absolute;
-    /*
-    background-image: url("/img/hero1.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    */
-    width: 100%;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin:auto;
-    z-index: 1;
-   
+    -webkit-mask-size: 100%;
+    -webkit-mask-position: center;
+    transition: -webkit-mask-size .3s;
 }
 
-.hero-overlay {
-    position: absolute;
-    
-    background-color: var(--hero-overlay-color-alpha);
-    background-image: linear-gradient(to right, var(--hero-overlay-color-solid), var(--hero-overlay-color-alpha), var(--hero-overlay-color-solid));
-    
-    z-index: 2;
-    width: 100%;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+.mask {
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    transition: -webkit-mask-size .3s;
 }
 
+.hero-mask {
+    -webkit-mask-image: url("/img/mask.png");
+    mask-image:  url("/img/mask.png");
+    mask-repeat: no-repeat;
+    width:auto;
+    height:100vh;
+}
+
+.hero-mask-decoration {
+    -webkit-mask-image: url("/img/mask.png");
+    mask-image: url("/img/mask.png");
+}
 
 .about-us {
-    display:none;
-    background-color:red;
+    text-align:center;
+    width:100%;
+    margin:20px;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-size:25px;
 }
 
-.familly {
-    display:none;
-    background-color:blue;
-}
+.familly { }
 
 .event {
-    
-    background-color:var(--hero-overlay-color-solid);
-   /* background-color:#e0e0e0;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card {
     border-radius: 8px;
-    border: 1px solid #dadce0;
+    border: var(--card-border);
     padding:10px;
     margin:10px;
     width:auto;  
     float:left;
-    background:#FFFFFF
+    background:var(--background-color);
+    display: grid;
+    grid-template-columns: 110px 400px;
 }
 
 .card .header {
     width: 100%;
-    font-size: 25px;
     text-align: center;
     padding: 10px;
+    margin-right:10px;
+    display: inline-block;
+    float:left;
+    max-width:200px
+}
+
+.card .header .title {
+    font-size: 30px;
+    width:100%;
+    display: inline-block;
+    text-align: center;
+    height:50px;
+    vertical-align: center;
+}
+
+.card .header .info {
+    font-size: 20px;  
+    display: inline-block;
+    text-align: center;
+    height:150px;
+}
+
+.card .body {
+    float: left;
+    height: 200px;
+    display: inline-block;
+    border-radius: 8px;
 }
 
 .card:hover {
-    background: #fff;
+    background: var(--background-color);
     border: 0;
-    box-shadow: 0 1px 2px rgb(60 64 67 / 30%),0 1px 3px 1px rgb(60 64 67 / 15%);
+    box-shadow: var(--card-box-shadow);
 }
 
 .card.locatie {
-    width:300px;
-    height:400px
+    width:auto;
+    height:100%
 }

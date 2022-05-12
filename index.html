@@ -6,10 +6,12 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+        <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script>
     </head>
 
     <body>
         <div class="content">
+
             <div class="section hero">
                 <div class="hero-image-wrapper">
                     <img id="heroImg" class="hero-img mask hero-mask" src="/img/hero6.jpg" alt="hero"/>
@@ -25,79 +27,77 @@
                     malesuada mauris, sit amet imperdiet orci lobortis a.
                 </div>
             </div>
-            <div class="section familly"> 
-                <div class="card godfathers">
-                    <div class="header">
-                        <div class="title">Nasi</div>
-                        <div class="info"></div>
-                    </div>
-                
-                    <div class="body"> </div>
-                </div>
 
-                <div class="card parents">
-                    <div class="header">
-                        <div class="title">Parinti</div>
-                        <div class="info"></div>
-                    </div>
-                
-                    <div class="body"> </div>
-                </div>
-                
+            <div class="section familly"> 
             </div>
+
             <div class="section event">
             
                 <div class="card location">
                     <div class="header">
                         <div class="title">Locatie</div>
-                        <div class="info">Address: Strada Armand Călinescu 20, Pitești</div>
                     </div>
 
                     <div class="body">
-                        <div class="mapouter">
-                            <div class="gmap_canvas"><iframe width="400" height="200" id="gmap_canvas"
-                                    src="https://maps.google.com/maps?q=Laguna%20Pitesti&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                                    scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                                <style>
-                                    .mapouter {
-                                        position: relative;
-                                        text-align: right;
-                                        height: 220px;
-                                        width: 400px;
-                                    }
-                                </style>
-                                <style>
-                                    .gmap_canvas {
-                                        overflow: hidden;
-                                        background: none !important;
-                                        height: 220px;
-                                        width: 400px;
-                                    }
-                                </style>
+                        <iframe id="gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.2598837530404!2d24.867266715426123!3d44.8570038817734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b2bc8115bdc5ef%3A0xe34026f5b11e0ef0!2sLaguna!5e0!3m2!1sen!2sro!4v1652384474760!5m2!1sen!2sro" allowfullscreen="" loading="lazy"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                    <div class="footer">Strada Armand Călinescu 20, Pitești</div>
+                </div>
+
+                <div class="card contact" style="display:none">
+                    <div class="header">
+                        <div class="title">Contact</div>
+                    </div>
+                
+                    <div class="body">
+                        <div class="person">
+                            <div class="avatar"></div>
+                            <div class="contact-info">
+                                <div class="info">
+                                    <div class="info-label">George</div>
+                                </div>
+                                <div class="info">
+                                    <div class="info-label">Telefon</div>
+                                    <div class="info-value"></div>
+                                </div>
+                                <div class="info">
+                                    <div class="info-label">Email</div>
+                                    <div class="info-value"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="person">
+                            <div class="avatar"></div>
+                            <div class="contact-info">
+                                <div class="info">
+                                    <div class="info-label">Andreea</div>
+                                </div>
+                                <div class="info">
+                                    <div class="info-label">Telefon</div>
+                                    <div class="info-value"></div>
+                                </div>
+                                <div class="info">
+                                    <div class="info-label">Email</div>
+                                    <div class="info-value"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="card confirmare">
-                    <div class="header">
-                        <div class="title">Confirmare</div>
-                        <div class="info"></div>
-                    </div>
-                
-                    <div class="body"> </div>
-                </div>
-
-                <div class="card contact">
-                    <div class="header">
-                        <div class="title">Contact</div>
-                        <div class="info"></div>
-                    </div>
-                
-                    <div class="body"> </div>
-                </div>
 
             </div>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <div class="modal-header"></div>
+                    <div class="modal-body">
+                        <iframe class="airtable-embed airtable-dynamic-height"
+                            src="https://airtable.com/embed/shrpN2i2FXma5PBy4?backgroundColor=blue" allowfullscreen="" loading="lazy"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" referrerpolicy="no-referrer-when-downgrade" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <script>

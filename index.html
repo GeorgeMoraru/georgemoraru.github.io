@@ -9,12 +9,12 @@
         <script src="https://kit.fontawesome.com/255caf807b.js" crossorigin="anonymous"></script>
         <link rel="preload" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.2598837530404!2d24.867266715426123!3d44.8570038817734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b2bc8115bdc5ef%3A0xe34026f5b11e0ef0!2sLaguna!5e0!3m2!1sen!2sro!4v1652384474760!5m2!1sen!2sro" as="document">
         <link rel="preload" href="https://airtable.com/embed/shrpN2i2FXma5PBy4" as="document">
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
     </head>
 
     <body>
         <div class="content">
-            <div class="menu">
-                <a id="menu" href="#"></a>
+            <div id="menu" class="menu">
                 <ul class="menu-wrapper">
                     <li class="menu-item">
                         <a class="menu-btn" href="#home">Home</a>
@@ -33,11 +33,30 @@
 
             <div id="home" class="section hero">
                 <div class="hero-image-wrapper">
-                    <img id="heroImg" class="hero-img hero-mask mask" src="/img/hero6.jpg" alt="hero"/>
+                    <div class="event-info">
+                        <div class="event-info-title">Andreea </br>&</br> George</div>
+                        <div class="event-info-date">20 August 2022</div>
+                    </div>
+                    <img id="heroImg" class="hero-img hero-mask mask" src="/img/hero.jpg" alt="hero"/>
+                   
                 </div>
             </div>
-            
+
             <div id="about-us" class="section about-us"> 
+                <div class="carousel carousel-fixed-size">
+                    <div class="carousel-overlay carousel-fixed-size">
+                        <img class="carousel-overlay" src="/img/background.png" alt="carousel-overlay" />
+                    </div>
+                    <div class="carousel-content carousel-fixed-size">
+                        <img class="carousel-img carousel-fixed-size active" src="/img/carousel1.jpg" alt="carousel1" />
+                        <img class="carousel-img carousel-fixed-size" src="/img/carousel2.jpg" alt="carousel2" />
+                        <img class="carousel-img carousel-fixed-size" src="/img/carousel3.jpg" alt="carousel3" />
+                        <img class="carousel-img carousel-fixed-size" src="/img/carousel4.jpg" alt="carousel4" />
+                        <img class="carousel-img carousel-fixed-size" src="/img/carousel5.jpg" alt="carousel5" />
+                    </div>
+                </div>
+
+
                 <div class="centered">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non lacus eget neque aliquam elementum eu faucibus neque.
                     Sed fringilla velit non magna pretium, in ornare odio porttitor. Nulla eu tincidunt erat, sed fermentum felis. Cras et
@@ -45,7 +64,9 @@
                     blandit libero ut arcu tempus gravida. Phasellus eget odio vulputate, lacinia felis sit amet, luctus justo. Fusce porta
                     malesuada mauris, sit amet imperdiet orci lobortis a.
                 </div>
+
             </div>
+
             <div id="event" class="section event">
                 <div class="card location">
                     <div class="header">
@@ -94,7 +115,7 @@
                 </div>
 
             </div>
-           
+
             <div id="contact-modal" class="modal" onClick="Utils.DismissConfirmationModal()">
                 <div class="modal-content">
                     <div class="modal-header">

@@ -1,11 +1,5 @@
 (function () {
-    
-    var randomHeroImage = function () {
-        var images = ["/img/hero1.jpg", "/img/hero2.jpg", "/img/hero3.jpg", "/img/hero4.jpg", "/img/hero5.jpg", "/img/hero6.jpg"];
-        var randomNumber = Math.floor((Math.random() * 6));
-        var heroImage = document.querySelector("#heroImg");
-        heroImage.src = images[randomNumber];
-    }
+    var CarouselActiveIndex = 0;
 
     var dismissConfirmationModal = function () {
         if (event.srcElement.id == "contact-modal" || event.srcElement.id == "close-btn" ) {
@@ -19,8 +13,31 @@
         document.querySelector("body").classList.add("disable-overflow");
     }
 
+    var animateCarousel = function () {
+        setActiveSlide();
+        setInterval(setActiveSlide, 4000);
+    };
+
+    var setActiveSlide = function () {
+        var carousel = document.querySelector(".carousel-content");
+        var carouselImages = carousel.children;
+        var activeImage = document.querySelector(".carousel-content .active");
+        if (activeImage == null && carouselImages.length > CarouselActiveIndex) {            
+            carouselImages[CarouselActiveIndex].classList.add("active");
+        } else {
+            var oldIndex = CarouselActiveIndex;
+            CarouselActiveIndex = CarouselActiveIndex == carouselImages.length - 1 ? CarouselActiveIndex = 0 : CarouselActiveIndex + 1;
+            carouselImages[CarouselActiveIndex].classList.add("active");
+            setTimeout(function (){
+                carouselImages[oldIndex].classList.remove("active");
+            }, 3000);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", animateCarousel);
+
     window.Utils = window.Utils || {};
-    Utils.RandomHeroImage = randomHeroImage;
     Utils.ShowConfirmationModal = showConfirmationModal;
     Utils.DismissConfirmationModal = dismissConfirmationModal;
+    
 })();

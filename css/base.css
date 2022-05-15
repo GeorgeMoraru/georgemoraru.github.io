@@ -178,6 +178,7 @@ body{
     min-height: 100vh;
     height: auto;
     column-gap: 5vw;
+    padding: 5vw;
 }
 
 .about-us .centered {
@@ -524,6 +525,8 @@ iframe#airtable {
     .person-info .info i {
         font-size: 1.5rem;
     }
-
+    .about-us {
+        padding:0;
+    }
 
 /*#endregion MobileView*/

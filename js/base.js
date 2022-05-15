@@ -15,7 +15,7 @@
 
     var animateCarousel = function () {
         setActiveSlide();
-        setInterval(setActiveSlide, 4000);
+        setInterval(setActiveSlide, 5000);
     };
 
     var setActiveSlide = function () {
@@ -30,7 +30,7 @@
             carouselImages[CarouselActiveIndex].classList.add("active");
             setTimeout(function (){
                 carouselImages[oldIndex].classList.remove("active");
-            }, 3000);
+            }, 5000);
         }
     }
 

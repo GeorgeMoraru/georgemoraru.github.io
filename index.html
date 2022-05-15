@@ -6,19 +6,38 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-        <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script>
+        <script src="https://kit.fontawesome.com/255caf807b.js" crossorigin="anonymous"></script>
+        <link rel="preload" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.2598837530404!2d24.867266715426123!3d44.8570038817734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b2bc8115bdc5ef%3A0xe34026f5b11e0ef0!2sLaguna!5e0!3m2!1sen!2sro!4v1652384474760!5m2!1sen!2sro" as="document">
+        <link rel="preload" href="https://airtable.com/embed/shrpN2i2FXma5PBy4" as="document">
     </head>
 
     <body>
         <div class="content">
+            <div class="menu">
+                <a id="menu" href="#"></a>
+                <ul class="menu-wrapper">
+                    <li class="menu-item">
+                        <a class="menu-btn" href="#home">Home</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-btn" href="#about-us">About us</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-btn" href="#event">Event</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-btn confirm-btn" href="#home" onClick="Utils.ShowConfirmationModal()">Confirmare</a>
+                    </li>
+                </ul>
+            </div>
 
-            <div class="section hero">
+            <div id="home" class="section hero">
                 <div class="hero-image-wrapper">
-                    <img id="heroImg" class="hero-img mask hero-mask" src="/img/hero6.jpg" alt="hero"/>
+                    <img id="heroImg" class="hero-img hero-mask mask" src="/img/hero6.jpg" alt="hero"/>
                 </div>
             </div>
             
-            <div class="section about-us"> 
+            <div id="about-us" class="section about-us"> 
                 <div class="centered">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non lacus eget neque aliquam elementum eu faucibus neque.
                     Sed fringilla velit non magna pretium, in ornare odio porttitor. Nulla eu tincidunt erat, sed fermentum felis. Cras et
@@ -27,83 +46,67 @@
                     malesuada mauris, sit amet imperdiet orci lobortis a.
                 </div>
             </div>
-
-            <div class="section familly"> 
-            </div>
-
-            <div class="section event">
-            
+            <div id="event" class="section event">
                 <div class="card location">
                     <div class="header">
                         <div class="title">Locatie</div>
                     </div>
 
-                    <div class="body">
+                    <div class="body center">
                         <iframe id="gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.2598837530404!2d24.867266715426123!3d44.8570038817734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b2bc8115bdc5ef%3A0xe34026f5b11e0ef0!2sLaguna!5e0!3m2!1sen!2sro!4v1652384474760!5m2!1sen!2sro" allowfullscreen="" loading="lazy"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
                     <div class="footer">Strada Armand Călinescu 20, Pitești</div>
                 </div>
 
-                <div class="card contact" style="display:none">
+                <div class="card contact">
                     <div class="header">
                         <div class="title">Contact</div>
                     </div>
                 
-                    <div class="body">
+                    <div class="body column">
                         <div class="person">
-                            <div class="avatar"></div>
-                            <div class="contact-info">
+                            <div class="avatar george"></div>
+                            <div class="person-info">
                                 <div class="info">
-                                    <div class="info-label">George</div>
+                                    George
                                 </div>
                                 <div class="info">
-                                    <div class="info-label">Telefon</div>
-                                    <div class="info-value"></div>
-                                </div>
-                                <div class="info">
-                                    <div class="info-label">Email</div>
-                                    <div class="info-value"></div>
+                                    <i class="fa-solid fa-phone"></i>0733914383
                                 </div>
                             </div>
                         </div>
+
                         <div class="person">
-                            <div class="avatar"></div>
-                            <div class="contact-info">
+                            <div class="avatar andreea"></div>
+                            <div class="person-info">
                                 <div class="info">
-                                    <div class="info-label">Andreea</div>
+                                    Andreea
                                 </div>
                                 <div class="info">
-                                    <div class="info-label">Telefon</div>
-                                    <div class="info-value"></div>
-                                </div>
-                                <div class="info">
-                                    <div class="info-label">Email</div>
-                                    <div class="info-value"></div>
+                                    <i class="fa-solid fa-phone"></i>0729918264
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
+                    <div class="footer"></div>
                 </div>
 
             </div>
-
-            <div class="modal">
+           
+            <div id="contact-modal" class="modal" onClick="Utils.DismissConfirmationModal()">
                 <div class="modal-content">
-                    <div class="modal-header"></div>
+                    <div class="modal-header">
+                        <i id="close-btn" class="icon-btn fa-solid fa-xmark" onClick="Utils.DismissConfirmationModal()"></i>
+                    </div>
                     <div class="modal-body">
-                        <iframe class="airtable-embed airtable-dynamic-height"
-                            src="https://airtable.com/embed/shrpN2i2FXma5PBy4?backgroundColor=blue" allowfullscreen="" loading="lazy"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" referrerpolicy="no-referrer-when-downgrade" frameborder="0"></iframe>
+                        <iframe id="airtable" class="airtable-embed" src="https://airtable.com/embed/shrpN2i2FXma5PBy4" frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
 
         </div>
-
-        <script>
-        randomHeroImage();
-        </script>
-
     </body>
 
 <html>

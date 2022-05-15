@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="/css/base.css">
         <script defer src="/js/base.js"></script>
+        <script defer src="https://kit.fontawesome.com/255caf807b.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/css/base.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-        <script defer src="https://kit.fontawesome.com/255caf807b.js" crossorigin="anonymous"></script>
+    
         <link rel="preload" href="https://airtable.com/embed/shrpN2i2FXma5PBy4" as="document">
+        <link rel="preload" href="/img/hero.jpg" as="image">
+        <link rel="preload" href="/img/background.png" as="image">
+        <link rel="preload" href="/img/carousel/carousel1.jpg" as="image">
+        <link rel="preload" href="/img/carousel/carousel2.jpg" as="image">
+        <link rel="preload" href="/img/carousel/carousel3.jpg" as="image">
+        <link rel="preload" href="/img/carousel/carousel4.jpg" as="image">
+        <link rel="preload" href="/img/carousel/carousel5.jpg" as="image">
+        <link rel="preload" href="/img/carousel/carousel6.jpg" as="image">
+        <link rel="preload" href="/img/carousel/carousel7.jpg" as="image">
+        <link rel="preload" href="/img/carousel/carousel8.jpg" as="image">
+        <link rel="preload" href="/img/carousel/carousel9.heic" as="image">
+        <link rel="preload" href="/img/carousel/carousel10.heic" as="image">
+        <link rel="preload" href="/img/George.svg" as="image">
+        <link rel="preload" href="/img/Andreea.svg" as="image">
+    
         <meta name="viewport" content="width=device-width, user-scalable=no" />
     </head>
 
@@ -17,8 +33,8 @@
             <div class="section hero">
                 <div id="home" class="menu">
                     <ul class="menu-wrapper">
-                        <li class="menu-item">
-                            <a class="menu-btn" href="#home">Home</a>
+                        <li class="menu-item sticky">
+                            <a class="menu-btn" href="#home"><i class="fa-solid fa-house"></i></a>
                         </li>
                         <li class="menu-item">
                             <a class="menu-btn" href="#about-us">About us</a>
@@ -56,12 +72,11 @@
                         <img class="carousel-img carousel-fixed-size" src="/img/carousel/carousel8.jpg" alt="carousel" />
                         <img class="carousel-img carousel-fixed-size" src="/img/carousel/carousel9.heic" alt="carousel" />
                         <img class="carousel-img carousel-fixed-size" src="/img/carousel/carousel10.heic" alt="carousel" />
-                       
                     </div>
                 </div>
 
 
-                <div class="message">
+                <div class="message reveal fade-right">
                         <p>
                             Ne-am hotarat. Si de data aceasta vorbim serios.
                         <span class="emphasis">Ioana si Alexandru</span> ne-au crezut, iar ei ne cunosc.
@@ -97,7 +112,7 @@
             </div>
 
             <div id="event" class="section event">
-                <div id="church" class="card location">
+                <div id="church" class="card location reveal fade-left">
                     <div class="header">
                         <div class="title">Biserica</div>
                     </div>
@@ -109,10 +124,10 @@
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 
-                    <div class="footer">Str Victoriei 20, Costești</div>
+                    <div class="footer">Str Victoriei 20</br>Costești</div>
                 </div>
                 
-                <div id="location" class="card location">
+                <div id="location" class="card location reveal fade-bottom">
                     <div class="header">
                         <div class="title">Restaurant</div>
                     </div>
@@ -121,10 +136,10 @@
                         <iframe class="gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.2598837530404!2d24.867266715426123!3d44.8570038817734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b2bc8115bdc5ef%3A0xe34026f5b11e0ef0!2sLaguna!5e0!3m2!1sen!2sro!4v1652384474760!5m2!1sen!2sro" allowfullscreen="" loading="lazy"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
-                    <div class="footer">Str Armand Călinescu 20, Pitești</div>
+                    <div class="footer">Str Armand Călinescu 20</br>Pitești</div>
                 </div>
 
-                <div class="card contact">
+                <div class="card contact reveal fade-right">
                     <div class="header">
                         <div class="title">Contact</div>
                     </div>
@@ -155,7 +170,9 @@
                         </div>
                         
                     </div>
-                    <div class="footer"></div>
+                    <div class="footer">
+                        <a class="confirm-btn" href="#home" onClick="Utils.ShowConfirmationModal()">Confirma</a>
+                    </div>
                 </div>
 
             </div>

@@ -111,6 +111,23 @@ body{
     color:var(--accent-color);
 }
 
+.menu-item.sticky {
+    position:fixed;
+    bottom:10px;
+    right:10px;
+    border:5px solid var(--accent-color);
+    border-radius:var(--round-border);
+    background-color: var(--background-color);
+    width:48px;
+    height:48px;
+    padding:0;
+}
+
+.menu-item.sticky i {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
 /*#endregion menu*/
 
 /*#region Hero*/
@@ -292,8 +309,7 @@ a.emphasis:focus {
 .card.location {
     width:auto;
     margin:10px;
-    grid-template-rows: 50px 200px 50px;
-   
+    grid-template-rows: 50px 210px 60px;
 }
 
 .avatar.george {
@@ -357,6 +373,10 @@ a.emphasis:focus {
     display: inline-block;
     text-align: center;
     padding: 10px;
+    font-size: 1.2rem;
+}
+
+.card .footer .confirm-btn {
     font-size: 1.2rem;
 }
 
@@ -580,4 +600,69 @@ iframe#airtable {
         padding:0;
     }
 
+    .about-us .message {
+        width:80vw;
+    }
+}
 /*#endregion MobileView*/
+
+/*#region Animations*/
+
+.reveal {
+    position: relative;
+    opacity: 0;
+}
+
+.reveal.active {
+    opacity: 1;
+}
+
+.active.fade-bottom {
+    animation: fade-bottom 1s ease-in-out;
+}
+
+.active.fade-left {
+    animation: fade-left 1s ease-in-out;
+}
+
+.active.fade-right {
+    animation: fade-right 1s ease-in-out;
+}
+
+@keyframes fade-bottom {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-left {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-right {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/*#endregion Animations*/

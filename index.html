@@ -2,12 +2,11 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="/css/base.css">
-        <script src="/js/base.js"></script>
+        <script defer src="/js/base.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/255caf807b.js" crossorigin="anonymous"></script>
-        <link rel="preload" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.2598837530404!2d24.867266715426123!3d44.8570038817734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b2bc8115bdc5ef%3A0xe34026f5b11e0ef0!2sLaguna!5e0!3m2!1sen!2sro!4v1652384474760!5m2!1sen!2sro" as="document">
+        <script defer src="https://kit.fontawesome.com/255caf807b.js" crossorigin="anonymous"></script>
         <link rel="preload" href="https://airtable.com/embed/shrpN2i2FXma5PBy4" as="document">
         <meta name="viewport" content="width=device-width, user-scalable=no" />
     </head>
@@ -65,27 +64,65 @@
                 </div>
 
 
-                <div class="centered">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non lacus eget neque aliquam elementum eu faucibus neque.
-                    Sed fringilla velit non magna pretium, in ornare odio porttitor. Nulla eu tincidunt erat, sed fermentum felis. Cras et
-                    ante vitae tellus iaculis pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non semper lacus. Aliquam
-                    blandit libero ut arcu tempus gravida. Phasellus eget odio vulputate, lacinia felis sit amet, luctus justo. Fusce porta
-                    malesuada mauris, sit amet imperdiet orci lobortis a.
+                <div class="message">
+                        <p>
+                            Ne-am hotarat. Si de data aceasta vorbim serios.
+                        <span class="emphasis">Ioana si Alexandru</span> ne-au crezut, iar ei ne cunosc.
+                        Tocmai de aceea vor sa ne fie nasi.
+                        </p>
+                        <p>
+                            Asa ca va invitam cu drag sa ne fiti alaturi
+                        La inceputul a ceea ce speram ca va fi:
+                        "si au trait fericiti pana la adanci batraneti"
+                        </p>
+                        <p>
+                            Daca vreti sa intrati in poveste veniti cu noi
+                        <span class="emphasis">Sambata 20 august 2022, orele 15:00</span> la <a href="#church" class="emphasis">Catedrala Sfantul Prooroc Ilie din Costesti</a> pentru celebrarea cununiei religioase.
+                        </p>
+                        <p>
+                        Parintii 
+                        <span class="parents">
+                            <span class="emphasis pull-left">Cristiana si Gheorghe Mihailescu</span> & <span class="emphasis pull-right">Gabriela si <span class="emphasis">Gheorghe</span> Moraru</span>
+                        </span>
+                        sunt optimisti, iar pe voi va asteptam
+                        sa ne acordati increderea si sa va bucurati alaturi de noi.
+                        </p>
+                        <p>
+                        Petrecerea va avea loc la restaurantul <a href="#location" class="emphasis">Laguna din Pitest, ora 19:00</a>.
+                        </p>
+                        <p>
+                            <a href="#home" onClick="Utils.ShowConfirmationModal()" class="emphasis confirm-btn">Va rugam sa confirmati prezenta pana la 1 august 2022</a>
+                        </p>
                 </div>
 
             </div>
 
             <div id="event" class="section event">
-                <div class="card location">
+                <div id="church" class="card location">
                     <div class="header">
-                        <div class="title">Locatie</div>
+                        <div class="title">Biserica</div>
+                    </div>
+                
+                    <div class="body center">
+                        <iframe class="gmap"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4130.094692478872!2d24.877776347807618!3d44.673074481049824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b29e3206d17bf9%3A0xdf7ba32bae20ba68!2sCathedral%20of%20Saint%20Prophet%20Elijah!5e0!3m2!1sen!2sro!4v1652642636726!5m2!1sen!2sro"
+                            allowfullscreen="" loading="lazy" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                
+                    <div class="footer">Str Victoriei 20, Costești</div>
+                </div>
+                
+                <div id="location" class="card location">
+                    <div class="header">
+                        <div class="title">Restaurant</div>
                     </div>
 
                     <div class="body center">
-                        <iframe id="gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.2598837530404!2d24.867266715426123!3d44.8570038817734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b2bc8115bdc5ef%3A0xe34026f5b11e0ef0!2sLaguna!5e0!3m2!1sen!2sro!4v1652384474760!5m2!1sen!2sro" allowfullscreen="" loading="lazy"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe class="gmap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2828.2598837530404!2d24.867266715426123!3d44.8570038817734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b2bc8115bdc5ef%3A0xe34026f5b11e0ef0!2sLaguna!5e0!3m2!1sen!2sro!4v1652384474760!5m2!1sen!2sro" allowfullscreen="" loading="lazy"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
-                    <div class="footer">Armand Călinescu 20, Pitești</div>
+                    <div class="footer">Str Armand Călinescu 20, Pitești</div>
                 </div>
 
                 <div class="card contact">

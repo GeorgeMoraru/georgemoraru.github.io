@@ -36,7 +36,7 @@
 
     var cleanURL = function () { 
         document.querySelector("body").classList.remove("disable-overflow");
-        alert("test");
+        window.alert("test");
     }
 
     var reveal = function() {

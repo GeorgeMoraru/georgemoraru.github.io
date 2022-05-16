@@ -59,9 +59,13 @@
         animateCarousel();
         cleanURL();
     }
-
+   
     document.addEventListener("DOMContentLoaded", initialize);
     window.addEventListener("scroll", reveal);
+
+    if (performance.navigation.type == 2) {
+        window.alert("test2");
+    }
 
     window.Utils = window.Utils || {};
     Utils.ShowConfirmationModal = showConfirmationModal;

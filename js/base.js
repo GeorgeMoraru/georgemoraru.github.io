@@ -5,10 +5,13 @@
         if (event.srcElement.id == "contact-modal" || event.srcElement.id == "close-btn" ) {
             document.querySelector("#contact-modal").classList.remove("show");
             document.querySelector("body").classList.remove("disable-overflow");
+            window.location.hash = "";
         }
     }
 
     var showConfirmationModal = function () {
+        window.location.hash = "#modal";
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
         document.querySelector("#contact-modal").classList.add("show");
         document.querySelector("body").classList.add("disable-overflow");
     }
@@ -51,14 +54,33 @@
 
     var initialize = function () {
         animateCarousel();
+        disableOverflow();
+        window.location.hash = "";
     }
    
-    document.querySelector("body").classList.remove("disable-overflow");
+    var handleHashChange = function () {
+        if(window.location.hash == "#modal") {
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+        } else {
+            disableOverflow();
+            document.querySelector("#contact-modal").classList.remove("show");
+        }
+    }
+
+    var disableOverflow = function() {
+        document.querySelector("body").classList.remove("disable-overflow");
+    }
+
+    var goTo = function (id) {
+        document.querySelector("#" + id).scrollIntoView({ behavior: "smooth" });
+    }
+
     document.addEventListener("DOMContentLoaded", initialize);
     window.addEventListener("scroll", reveal);
+    window.addEventListener("hashchange", handleHashChange);
 
     window.Utils = window.Utils || {};
     Utils.ShowConfirmationModal = showConfirmationModal;
     Utils.DismissConfirmationModal = dismissConfirmationModal;
-    
+    Utils.goTo = goTo;
 })();

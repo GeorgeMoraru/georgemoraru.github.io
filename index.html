@@ -29,20 +29,20 @@
     <body>
         <div class="content">
 
-            <div class="section hero">
-                <div id="home" class="menu">
+            <div id="home" class="section hero">
+                <div class="menu">
                     <ul class="menu-wrapper">
                         <li class="menu-item sticky">
-                            <a class="menu-btn" href="#home"><i class="fa-solid fa-house"></i></a>
+                            <a class="menu-btn" onClick="Utils.goTo('home')"><i class="fa-solid fa-house"></i></a>
                         </li>
                         <li class="menu-item">
-                            <a class="menu-btn" href="#about-us">Despre noi</a>
+                            <a class="menu-btn" onClick="Utils.goTo('about-us')">Despre noi</a>
                         </li>
                         <li class="menu-item">
-                            <a class="menu-btn" href="#event">Eveniment</a>
+                            <a class="menu-btn" onClick="Utils.goTo('event')">Eveniment</a>
                         </li>
                         <li class="menu-item">
-                            <a class="menu-btn confirm-btn" href="#home" onClick="Utils.ShowConfirmationModal()">Confirma</a>
+                            <a class="menu-btn confirm-btn" onClick="Utils.ShowConfirmationModal()">Confirma</a>
                         </li>
                     </ul>
                 </div>
@@ -88,7 +88,7 @@
                         </p>
                         <p>
                             Daca vreti sa intrati in poveste veniti cu noi
-                        <span class="emphasis">Sambata 20 august 2022, orele 15:00</span> la <a href="#church" class="emphasis">Catedrala Sfantul Prooroc Ilie din Costesti</a> pentru celebrarea cununiei religioase.
+                        <span class="emphasis">Sambata 20 august 2022, orele 15:00</span> la <a onClick="Utils.goTo('church')" class="emphasis">Catedrala Sfantul Prooroc Ilie din Costesti</a> pentru celebrarea cununiei religioase.
                         </p>
                         <p>
                         Parintii 
@@ -101,10 +101,10 @@
                         Iar pe voi va asteptam sa ne acordati increderea si sa va bucurati alaturi de noi.
                         </p>
                         <p>
-                        Petrecerea va avea loc la restaurantul <a href="#location" class="emphasis">Laguna din Pitesti, ora 19:00</a>.
+                        Petrecerea va avea loc la restaurantul <a onClick="Utils.goTo('location')" class="emphasis">Laguna din Pitesti, ora 19:00</a>.
                         </p>
                         <p>
-                            <a href="#home" onClick="Utils.ShowConfirmationModal()" class="emphasis confirm-btn">Va rugam sa confirmati prezenta pana la 1 august 2022</a>
+                            <a onClick="Utils.ShowConfirmationModal()" class="emphasis confirm-btn">Va rugam sa confirmati prezenta pana la 1 august 2022</a>
                         </p>
                 </div>
 
@@ -170,7 +170,7 @@
                         
                     </div>
                     <div class="footer">
-                        <a class="confirm-btn" href="#home" onClick="Utils.ShowConfirmationModal()">Confirma</a>
+                        <a class="confirm-btn" onClick="Utils.ShowConfirmationModal()">Confirma</a>
                     </div>
                 </div>
 

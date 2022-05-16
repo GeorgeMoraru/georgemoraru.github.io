@@ -248,6 +248,10 @@ body{
     transform:translate(0);
 }
 
+.carousel-first-slide {
+    transform:translate(0);
+}
+
 .about-us .message {
     text-align: center;
     width: 50vw;
@@ -597,6 +601,7 @@ iframe#airtable {
 
     .about-us {
         padding:0;
+        overflow:hidden;
     }
 
     .about-us .message {

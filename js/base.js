@@ -35,7 +35,7 @@
     }
 
     var cleanURL = function () {
-        window.location.hash = "home";
+        document.querySelector("body").classList.remove("disable-overflow");
     }
 
     var reveal = function() {

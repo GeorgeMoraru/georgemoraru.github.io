@@ -34,8 +34,9 @@
         }
     }
 
-    var cleanURL = function () {
+    var cleanURL = function () { 
         document.querySelector("body").classList.remove("disable-overflow");
+        alert("test");
     }
 
     var reveal = function() {

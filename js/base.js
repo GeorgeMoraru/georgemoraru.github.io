@@ -34,14 +34,8 @@
         }
     }
 
-    var cleanURL = function () { 
-        document.querySelector("body").classList.remove("disable-overflow");
-        window.alert("test");
-    }
-
     var reveal = function() {
         var reveals = document.querySelectorAll(".reveal");
-
         for (var i = 0; i < reveals.length; i++) {
             var windowHeight = window.innerHeight;
             var elementTop = reveals[i].getBoundingClientRect().top;
@@ -57,15 +51,11 @@
 
     var initialize = function () {
         animateCarousel();
-        cleanURL();
     }
    
+    document.querySelector("body").classList.remove("disable-overflow");
     document.addEventListener("DOMContentLoaded", initialize);
     window.addEventListener("scroll", reveal);
-
-    if (performance.navigation.type == 2) {
-        window.alert("test2");
-    }
 
     window.Utils = window.Utils || {};
     Utils.ShowConfirmationModal = showConfirmationModal;

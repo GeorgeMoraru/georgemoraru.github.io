@@ -82,6 +82,7 @@ body{
     display:inline-block;
     float:right;
     list-style: none;
+    margin-right: 10px;
 }
 
 .menu-item {
@@ -448,7 +449,7 @@ iframe.gmap {
 
 iframe#airtable {
     width:100%;
-    height:400px;
+    height:550px;
 }
 
 /*#endregion iFrame*/
@@ -474,8 +475,8 @@ iframe#airtable {
 }
 
 .modal-content {
-    width: 400px;
-    height:400px;
+    width: 700px;
+    height:550px;
     display: block;
     border-radius: 8px;
     background: var(--background-color);

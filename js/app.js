@@ -4,7 +4,8 @@ var width = 1;
 var height = 1;
 var blanket = [];
 var patternList = [];
-
+var availablePatternsList;
+var patternColor;
 var createBlanket = function() {
     updateWidth();
     updateHeight();
@@ -28,6 +29,10 @@ var getNextPattern = function(i,j) {
         patternNo = getNextPattern(i,j);
     } else {
         patternList[patternNo] = patternList[patternNo] - 1;
+        if (patternList[patternNo] == 0 ) {
+            var index = availablePatternsList.findIndex(v => v==patternNo);
+            availablePatternsList.splice(index, 1);
+        }
     };
 
     return patternNo;
@@ -36,44 +41,71 @@ var getNextPattern = function(i,j) {
 var positionIsIncorrect =  function(i,j, patternNo) {
     var prevCol = j-1;
     var prevRow = i-1;
-    var posIsIncorrect = false;
 
     if (i == 0 && j == 0) {
         return false;
-    } 
+    }
 
     if( i == 0 && j > 0) {
-        return blanket[i][prevCol] == patternNo;
+        return blanket[i][prevCol] == patternNo || getPatternColor(blanket[i][prevCol]) == getPatternColor(patternNo);
     }
 
     if( i > 0 && j == 0 ) {
-        return j < width - 1 ? blanket[prevRow][j] == patternNo || blanket[prevRow][j + 1] == patternNo : blanket[prevRow][j] == patternNo;
+        return blanket[prevRow][j] == patternNo || getPatternColor(blanket[prevRow][j]) == getPatternColor(patternNo);
     }
 
     if( i > 0 && j > 0 ) {
-        posIsIncorrect = blanket[prevRow][prevCol] == patternNo || blanket[i][prevCol] == patternNo || blanket[prevRow][j] == patternNo;
-        return j < width - 1 ? posIsIncorrect || blanket[prevRow][j + 1] == patternNo : posIsIncorrect;
-         
+        var isIncorrectPattern = blanket[i][prevCol] == patternNo || blanket[prevRow][j] == patternNo;
+        var isIncorrectColor = getPatternColor(blanket[i][prevCol]) == getPatternColor(patternNo) || getPatternColor(blanket[prevRow][j]) == getPatternColor(patternNo);
+        return isIncorrectPattern || isIncorrectColor;
     }
     return false;
 };
 
 var updateQuantity = function() {
+    availablePatternsList = [];
     for(var i=0;i<patternList.length;i++) {
         var patternEl = document.querySelector("#pattern" + i);
-        var quantity = parseInt(patternEl.querySelector("input").value) || 1;
+        var quantity = parseInt(patternEl.querySelector("input.quantity").value) || 0;
         patternList[i] = quantity;
+        if(quantity > 0) availablePatternsList.push(i);
     }
 };
 
+var updateColor = function(e) {
+    var patternSymbol = e.currentTarget;
+    patternSymbol.style = "background-color:" + patternSymbol.value;
+};
+
+var generateRandomColor = function () {
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
+};
+
+var getRandomPatternNo = function() {
+    var index = Math.floor(Math.random() * availablePatternsList.length);
+    return availablePatternsList[index];
+};
+
+
+var getPatternColor = function(patternId) {
+    var patternEl = document.querySelector("#pattern" + patternId);
+    var style = patternEl.querySelector(".patternSymbol").getAttribute("style");
+    return style;
+};
+
 var updateWidth = function(){
-    width = parseInt(document.querySelector("#columns").value) || width;
+    width = parseInt(document.querySelector("#columns").value) || width;  
 };
 
 var updateHeight = function(){
     height = parseInt(document.querySelector("#rows").value) || height;
 };
 
+var updateBasePatternQuantity = function() {
+    var basePattern = document.querySelector("#pattern0");
+    basePattern.querySelector("input.quantity").value = width * height;
+};
+ss
 var addPatternUI = function() {
     var patternNo = patternList.length;
     var settings = document.createElement("div");
@@ -82,18 +114,22 @@ var addPatternUI = function() {
 
     var settingsName = document.createElement("div");
     settingsName.className = "setting-name";
-    settingsName.innerText = "Pattern #" + patternNo;
+    settingsName.innerText = patternNo == 0 ? "Base pattern" : "Pattern #" + patternNo;
 
     var settingsValue = document.createElement("div");
     settingsValue.className = "settings-value";
-    
-    var patternSymbol = document.createElement("div");
+
+    var patternSymbol = document.createElement("input");
     patternSymbol.className = "patternSymbol";
-    patternSymbol.style = "background-color:#" + generateRandomColor();
+    patternSymbol.type = "color";  
+    patternSymbol.style = "background-color:" + patternColor;
+    patternSymbol.value = patternColor;
+
+    patternSymbol.onchange = updateColor;
 
     var countInput = document.createElement("input");
     countInput.type = "text";
-    countInput.className = "short";
+    countInput.className = "short quantity";
     countInput.value = width * height;
     patternList.push(width * height);
 
@@ -108,25 +144,17 @@ var addPatternUI = function() {
     settingsContainer.insertBefore(settings, patternBtn);    
 };
 
-var generateRandomColor = function () {
-    return Math.floor(Math.random() * 16777215).toString(16);
-};
-
-var getRandomPatternNo = function() {
-
-    return Math.floor(Math.random() * patternList.length);
-}
-
 var displayBlanket = function() {
+    var blanketWrapper = document.createElement("div");
+    blanketWrapper.className = "blanket-wrapper";
+
     var blanketEl = document.createElement("table");
     blanketEl.className = "blanket";
 
     var blanketContainer = document.querySelector("#blanket-container");
-    if (blanketContainer.hasChildNodes()) {
-        blanketContainer.removeChild(blanketContainer.firstChild);
-    }
-
-    blanketContainer.appendChild(blanketEl);
+  
+    blanketWrapper.appendChild(blanketEl);
+    blanketContainer.appendChild(blanketWrapper);
 
     for(var i=0;i<height;i++)
     {
@@ -137,9 +165,7 @@ var displayBlanket = function() {
             var column = document.createElement("td");
             column.innerText = blanket[i][j];
             column.className = "cellSqaure";
-            var patternEl = document.querySelector("#pattern" + blanket[i][j]);
-            var style = patternEl.querySelector(".patternSymbol").getAttribute("style");
-            column.style = style;
+            column.style = getPatternColor(blanket[i][j]);
             row.appendChild(column);
         }
     }
@@ -147,6 +173,7 @@ var displayBlanket = function() {
 };
 
 var bindEvents = function() {
+    patternColor = generateRandomColor();
     var generateBlanketElem = document.querySelector("#settings-btn");
     generateBlanketElem.addEventListener('click', createBlanket);
 

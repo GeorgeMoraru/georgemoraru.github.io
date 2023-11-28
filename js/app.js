@@ -135,6 +135,7 @@ var displayBlanket = function() {
         
         for(var j=0;j<width;j++) {
             var column = document.createElement("td");
+            column.innerText = blanket[i][j];
             column.className = "cellSqaure";
             var patternEl = document.querySelector("#pattern" + blanket[i][j]);
             var style = patternEl.querySelector(".patternSymbol").getAttribute("style");

@@ -1,0 +1,100 @@
+:root {
+    --body-background:#0b132b;
+    --container-background:#1c2541;
+    --accent-color:#3a506b;
+    --default-border:1px solid var(--accent-color);
+    --default-boder-radius:8px;
+}
+
+body {
+   
+    font-family: 'Nanum Myeongjo',serif;
+}
+
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-rows: 100vh;
+    grid-template-columns: 25% 75%;
+}
+
+.container {
+    border-radius:var(--default-boder-radius);
+    border:var(--default-border);
+    background-color: var(--container-background);
+    color:var(--accent-color);
+    padding:10px;
+    display: inline-block;
+    width:100%;
+    margin-bottom:10px;
+}
+
+button,input {
+    text-decoration: none;
+    border:none;
+    background-color: inherit;
+    border-radius:var(--default-boder-radius);
+    border:var(--default-border);
+    padding:5px;
+    color:var(--accent-color);
+    text-align:center;
+    font-size:12px;
+}
+
+.settings-container {
+    padding:10px;
+    background-color: var(--body-background);
+}
+
+.settings {
+    margin-bottom:10px;
+    display: inline-block;
+    width:100%;
+}
+
+.setting-name,
+.setting-value {
+    display: inline-block;
+    float:left;
+}
+
+.setting-name {
+    width:30%;
+}
+
+.setting-value {
+    width: 70%;
+}
+
+.short {
+    width:100px;
+}
+
+.default-btn {
+    float:right;
+    width:150px;
+    font-size: 12px;
+}
+
+.patternSymbol {
+    width:10px;
+    height:10px;
+    border-radius:100%;
+    border:var(--default-border);
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.floatRight {
+    float:right;
+}
+
+.cellSqaure{
+    width:50px;
+    height:50px;
+}

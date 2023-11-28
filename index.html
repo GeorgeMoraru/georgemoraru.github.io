@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <script defer src="/js/base.js"></script>
-        <script defer src="https://kit.fontawesome.com/255caf807b.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/css/base.css">
-        <meta name="viewport" content="width=device-width, user-scalable=no" />
-    </head>
+    <link rel="stylesheet" href="/css/app.css" />
+    <script src="/js/app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blanket Random Generator</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="settings-container">
+            
+            <div id="settings" class="container">
 
-    <body>
-        <div class="content">
-            <div class="menu">
-                <ul class="menu-wrapper">
-                    <li class="menu-item">
-                        <a href="/BlanketDesignGenerator/index.html" class="menu-btn">Blanket Generator</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="/WeedingInvitation/index.html" class="menu-btn">Wedding Invitation</a>
-                    </li>
+                <div class="settings">
+                    <div class="setting-name">Blanket size</div>
+                    <div class="setting-value">
+                        <input class="short" type="text" id="columns" value="1" />
+                        <span> X </span>
+                        <input class="short" type="text" id="rows" value="1" />
+                    </div>
+                </div>
 
-                </ul>
-            </div>
+                <button id="add-pattern-btn" class="container default-btn"> Add pattern </button>
+            </div>  
+            <button id="settings-btn" class="container default-btn"> Generate </button>
+
         </div>
-    </body>
+        <div id="blanket-container"></div>
+    </div>
 
-<html>
+</body>
+</html>

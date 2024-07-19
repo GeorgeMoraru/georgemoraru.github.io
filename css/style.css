@@ -6,22 +6,6 @@
   font-display:swap;
 }
 
-@font-face{
-  font-family: "Starjhol";  
-  src:url("../fonts/Starjhol.woff2")format("woff2");
-  font-weight:normal;
-  font-style:normal;
-  font-display:swap;
-}
-
-@font-face{
-  font-family: "Starjout";  
-  src:url("../fonts/Starjout.woff2")format("woff2");
-  font-weight:normal;
-  font-style:normal;
-  font-display:swap;
-}
-
 :root{
   font-size: 50%;
   --starWarsYellow: #EEDB00;
@@ -49,18 +33,16 @@
     overflow: hidden;
     scroll-behavior: smooth;
   }
-    
+
   .section-wrapper {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 100vh 100vh;
-    grid-row-gap: 30px;
-    align-items: center;    
-    height: 100%;    
-    overflow-x: hidden;
-    overflow-y: auto;
+    height: 100vh;
+    width: 100%;
     scroll-snap-type: y proximity;
-  }
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 100vh;
+    overflow: hidden;
+}
 
   .section{
     width: 100%;
@@ -72,6 +54,11 @@
     height: 100vh;
     scroll-snap-align: end;
     padding: 10px;
+    opacity:0;
+  }
+
+  .section.active {
+    opacity:1;
   }
 
   .wrapper {
@@ -85,10 +72,12 @@
 
   .food {
     grid-row: 1 / 1;
+    grid-row: 1 / 1;
   }
 
   .drinks {
-    grid-row: 2 / 2;
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
   }
 
   .cat {
@@ -139,12 +128,12 @@
 }
 
 .stars {
-  background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  background:#000 url(../images/stars.png) repeat top center;
   z-index:-2;
 }
 
 .twinkling{
-  background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+  background:transparent url(../images/twinkling.png) repeat top center;
   z-index:-1;
   animation:move-twink-back 200s linear infinite;
 }

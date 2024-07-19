@@ -1,7 +1,9 @@
 document.addEventListener("wheel",scrollFunction);
 document.addEventListener("touchmove",scrollFunction);
+document.addEventListener("scroll",scrollFunction);
 
 var scrollFunction = function() {
+    alert("hello");
     var sections = document.querySelectorAll('.section');
     sections.forEach(section => {
         if(section.className.indexOf("active") > -1) {

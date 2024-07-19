@@ -1,5 +1,5 @@
 document.addEventListener("wheel",scrollFunction);
-document.addEventListener("ontouchmove",scrollFunction);
+document.addEventListener("touchmove",scrollFunction);
 
 var scrollFunction = function() {
     var sections = document.querySelectorAll('.section');

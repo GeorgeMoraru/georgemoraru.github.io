@@ -1,3 +1,27 @@
+@font-face{
+  font-family: "Starjedi";  
+  src:url("/fonts/Starjedi.woff2")format("woff2");
+  font-weight:normal;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face{
+  font-family: "Starjhol";  
+  src:url("/fonts/Starjhol.woff2")format("woff2");
+  font-weight:normal;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face{
+  font-family: "Starjout";  
+  src:url("/fonts/Starjout.woff2")format("woff2");
+  font-weight:normal;
+  font-style:normal;
+  font-display:swap;
+}
+
 :root{
   font-size: 50%;
   --starWarsYellow: #EEDB00;
@@ -6,14 +30,15 @@
   --rebellionWhite:#f0ece1;
   --rebellionOrangeDark:#dd4e1e;
   --rebellionOrange:#e5703d;
+  --Starjedi:"Starjedi";
+  --Starjhol:"Starjhol";
+  --Starjout:"Starjout";
 }
-/*	transform: perspective(300px) rotateX(10deg);*/
 
 * {
     margin: 0;
     box-sizing: border-box;
-    font-family: "Star Jedi V2";
-    
+    font-family: var(--Starjedi);
     color: var(--rebellionWhite);
 }
 

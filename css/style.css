@@ -1,5 +1,5 @@
 :root{
-  font-size: 15px;
+  font-size: 50%;
   --starWarsYellow: #EEDB00;
   --rebellionBlack:#080808;
   --rebellionGray:#3b444b;
@@ -34,7 +34,7 @@
     height: 100%;    
     overflow-x: hidden;
     overflow-y: auto;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
   }
 
   .section{
@@ -46,6 +46,11 @@
     scroll-snap-align: center;
     height: 100vh;
     scroll-snap-align: end;
+    padding: 10px;
+  }
+
+  .wrapper {
+    padding: 10px;
   }
 
   .section-title{
@@ -62,7 +67,7 @@
   }
 
   .cat {
-    padding: 20px 0;
+    padding: 10px 0;
     transform: perspective(300px) rotateX(20deg);
   }
 

@@ -29,8 +29,7 @@
   body {
     width: 100vw;
     background-color: var(--rebellionBlack);
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow:hidden;
     scroll-behavior: smooth;
   }
 
@@ -45,6 +44,9 @@
     display: grid;
     align-items: center;
     padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height:100%;
   }
 
   .wrapper {

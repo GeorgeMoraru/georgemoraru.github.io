@@ -1,4 +1,7 @@
-document.addEventListener("wheel", function() {
+document.addEventListener("wheel",scrollFunction);
+document.addEventListener("ontouchmove",scrollFunction);
+
+var scrollFunction = function() {
     var sections = document.querySelectorAll('.section');
     sections.forEach(section => {
         if(section.className.indexOf("active") > -1) {
@@ -7,5 +10,4 @@ document.addEventListener("wheel", function() {
             section.className = section.className + " active";
             section.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         }
-    });
-})
+    })

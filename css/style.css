@@ -35,6 +35,9 @@
 
   .section-wrapper {
     width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height:100vh;
 }
 
   .section{
@@ -43,10 +46,7 @@
     text-align: center;
     display: grid;
     align-items: center;
-    padding: 10px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height:100%;
+    padding: 10px;    
   }
 
   .wrapper {

@@ -1,7 +1,3 @@
-document.addEventListener("wheel",scrollFunction);
-document.addEventListener("touchmove",scrollFunction);
-document.addEventListener("scroll",scrollFunction);
-
 var scrollFunction = function() {
     alert("hello");
     var sections = document.querySelectorAll('.section');
@@ -14,3 +10,7 @@ var scrollFunction = function() {
         }
     })
 }
+
+document.addEventListener("wheel",scrollFunction);
+document.addEventListener("touchmove",scrollFunction);
+window.addEventListener("touchmove",scrollFunction);

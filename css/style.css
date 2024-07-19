@@ -28,16 +28,14 @@
 
   body {
     width: 100vw;
-    height: 100vh;
     background-color: var(--rebellionBlack);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     scroll-behavior: smooth;
   }
 
   .section-wrapper {
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 
   .section{

@@ -11,3 +11,4 @@ var scrollFunction = function() {
             section.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
         }
     })
+}

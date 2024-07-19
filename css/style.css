@@ -1,0 +1,120 @@
+:root{
+  font-size: 15px;
+  --starWarsYellow: #EEDB00;
+  --rebellionBlack:#080808;
+  --rebellionGray:#3b444b;
+  --rebellionWhite:#f0ece1;
+  --rebellionOrangeDark:#dd4e1e;
+  --rebellionOrange:#e5703d;
+}
+/*	transform: perspective(300px) rotateX(10deg);*/
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Star Jedi V2";
+    
+    color: var(--rebellionWhite);
+}
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--rebellionBlack);
+    overflow: hidden;
+    scroll-behavior: smooth;
+  }
+    
+  .section-wrapper {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100vh 100vh;
+    grid-row-gap: 30px;
+    align-items: center;    
+    height: 100%;    
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+  }
+
+  .section{
+    width: 100%;
+    grid-column: 1;
+    text-align: center;
+    display: grid;
+    align-items: center;
+    scroll-snap-align: center;
+    height: 100vh;
+    scroll-snap-align: end;
+  }
+
+  .section-title{
+    font-size: 2.5rem;
+    color: var(--starWarsYellow);
+  }
+
+  .food {
+    grid-row: 1 / 1;
+  }
+
+  .drinks {
+    grid-row: 2 / 2;
+  }
+
+  .cat {
+    padding: 20px 0;
+    transform: perspective(300px) rotateX(20deg);
+  }
+
+  .cat-title {
+    margin: 10px 0;
+    font-size: 1.8rem;
+    color: var(--rebellionOrange);
+  }
+
+  .cat-item {
+    font-size: 1.5rem;
+  }
+
+  .cat-info {
+    font-style: italic;
+  }
+
+  @keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-webkit-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-moz-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+@-ms-keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+
+.stars, .twinkling {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.stars {
+  background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  z-index:-2;
+}
+
+.twinkling{
+  background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+  z-index:-1;
+  animation:move-twink-back 200s linear infinite;
+}

@@ -35,13 +35,9 @@
   }
 
   .section-wrapper {
-    height: 100vh;
     width: 100%;
-    scroll-snap-type: y proximity;
-    display: grid;
-    grid-template-columns: 100vw;
-    grid-template-rows: 100vh 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
   .section{
@@ -50,14 +46,7 @@
     text-align: center;
     display: grid;
     align-items: center;
-    scroll-snap-align: center;
-    height: 100vh;
-    scroll-snap-align: end;
     padding: 10px;
-  }
-
-  .section.active {
-    opacity:1;
   }
 
   .wrapper {
@@ -67,16 +56,6 @@
   .section-title{
     font-size: 2.5rem;
     color: var(--starWarsYellow);
-  }
-
-  .food {
-    grid-row: 1 / 1;
-    grid-column: 1 / 1;
-  }
-
-  .drinks {
-    grid-row: 2 / 2;
-    grid-column: 1 / 1;
   }
 
   .cat {
